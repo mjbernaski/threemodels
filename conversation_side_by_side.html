@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .metadata {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .round {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .round-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .user-prompt {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .model-response {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .anthropic-header {
+            background: #7C3AED;
+        }
+        
+        .openai-header {
+            background: #10B981;
+        }
+        
+        .gemini-header {
+            background: #F59E0B;
+        }
+        
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .model-content code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        
+        .model-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        .model-content {
+            counter-reset: list-counter;
+        }
+        
+        .model-content ol {
+            list-style-type: none;
+        }
+        
+        .model-content ol li {
+            counter-increment: list-counter;
+            position: relative;
+        }
+        
+        .model-content ol li:before {
+            content: counter(list-counter) ". ";
+            position: absolute;
+            left: -30px;
+            width: 25px;
+            text-align: right;
+        }
+        
+        .model-content li {
+            margin: 5px 0;
+        }
+        
+        .model-content p {
+            margin: 10px 0;
+        }
+        
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .model-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .model-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+        
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-07-21T16:41:45.492775<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-07-21T16:42:39.658786
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-07-21T16:42:39.658767</div>
+            </div>
+            
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>what cognitive and social development do students experience in high school?  what role do teachers and faculty play?</p></div>
+            </div>
+            
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-3-5-sonnet-20241022</span></div>
+                    <div class="model-content"><p>High school students experience significant cognitive and social development, and teachers/faculty play crucial roles in supporting this growth. Here&#x27;s a comprehensive breakdown:</p><p>Cognitive Development:<ol><li>Abstract Thinking</li><li>Development of complex reasoning skills</li><li>Improved problem-solving abilities</li><li>Better understanding of hypothetical situations</li><li>Enhanced critical thinking</li></ol></p><ol><li>Academic Growth</li><li>Subject-specific knowledge expansion</li><li>Study skills development</li><li>Goal-setting abilities</li><li>Time management skills</li></ol><ol><li>Executive Functions</li><li>Better planning and organization</li><li>Improved decision-making</li><li>Enhanced memory capabilities</li><li>Greater self-regulation</li></ol><p>Social Development:<ol><li>Identity Formation</li><li>Self-discovery and awareness</li><li>Personal values development</li><li>Career/future planning</li><li>Cultural identity exploration</li></ol></p><ol><li>Peer Relationships</li><li>Friendship building</li><li>Romantic relationships</li><li>Group dynamics</li><li>Social skills development</li></ol><ol><li>Emotional Growth</li><li>Emotional regulation</li><li>Empathy development</li><li>Self-expression</li><li>Stress management</li></ol><p>Teachers/Faculty Roles:</p><ol><li>Academic Support</li><li>Subject matter instruction</li><li>Academic guidance</li><li>Study skill development</li><li>College/career preparation</li></ol><ol><li>Mentorship</li><li>Role modeling</li><li>Personal guidance</li><li>Career advice</li><li>emotional support</li></ol><ol><li>Social Development Support</li><li>Creating safe learning environments</li><li>Facilitating group work</li><li>Managing classroom dynamics</li><li>Teaching conflict resolution</li></ol><ol><li>Personal Growth Support</li><li>Building student confidence</li><li>Encouraging self-expression</li><li>Promoting responsibility</li><li>Supporting goal-setting</li></ol><ol><li>Safety and Well-being</li><li>Monitoring mental health</li><li>Identifying at-risk behavior</li><li>Providing resources</li><li>Creating supportive environments</li></ol><ol><li>Administrative Functions</li><li>Progress tracking</li><li>Parent communication</li><li>Behavioral management</li><li>Resource coordination</li></ol><p>Support Strategies:</p><ol><li>Classroom Management</li><li>Clear expectations</li><li>Consistent routines</li><li>Fair discipline</li><li>Inclusive environment</li></ol><ol><li>Teaching Methods</li><li>Differentiated instruction</li><li>Interactive learning</li><li>Project-based activities</li><li>Collaborative work</li></ol><ol><li>Assessment and Feedback</li><li>Regular evaluation</li><li>Constructive feedback</li><li>Progress monitoring</li><li>Growth recognition</li></ol><ol><li>Social-Emotional Support</li><li>Active listening</li><li>Emotional validation</li><li>Conflict resolution</li><li>Problem-solving guidance</li></ol><p>Key Considerations:</p><ol><li>Individual Differences</li><li>Learning styles</li><li>Development rates</li><li>Personal backgrounds</li><li>Special needs</li></ol><ol><li>Environmental Factors</li><li>Family dynamics</li><li>Socioeconomic status</li><li>Cultural influences</li><li>Community resources</li></ol><ol><li>Developmental Challenges</li><li>Peer pressure</li><li>Academic stress</li><li>Identity issues</li><li>Mental health concerns</li></ol><p>Best Practices:</p><ol><li>Communication</li><li>Open dialogue</li><li>Regular feedback</li><li>Parent engagement</li><li>Clear expectations</li></ol><ol><li>Professional Development</li><li>Ongoing training</li><li>Current research</li><li>Best practices</li><li>Collaboration</li></ol><ol><li>Resource Utilization</li><li>Support services</li><li>Technology</li><li>Community resources</li><li>Professional networks</li></ol><ol><li>Documentation</li><li>Progress tracking</li><li>Behavior monitoring</li><li>Intervention plans</li><li>Success measures</li></ol><p>Impact Areas:</p><ol><li>Academic Success</li><li>Subject mastery</li><li>Skill development</li><li>Achievement goals</li><li>Future preparation</li></ol><ol><li>Personal Growth</li><li>Self-confidence</li><li>Independence</li><li>Responsibility</li><li>Character development</li></ol><ol><li>Social Integration</li><li>Peer relationships</li><li>Community involvement</li><li>Leadership skills</li><li>Collaboration abilities</li></ol><ol><li>Future Readiness</li><li>College preparation</li><li>Career planning</li><li>Life skills</li><li>Goal setting</li></ol><p>Understanding and supporting cognitive and social development in high school requires a comprehensive approach from teachers and faculty. Success depends on:</p><ol><li>Recognition of individual needs</li><li>Consistent support systems</li><li>Clear communication</li><li>Professional expertise</li><li>Resource availability</li><li>Collaborative efforts</li><li>Regular evaluation</li><li>Adaptive strategies</li></ol><p>This comprehensive support system helps ensure students develop the necessary cognitive and social skills for success in their academic and personal lives.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 29 in / 845 out / 874 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-4o</span></div>
+                    <div class="model-content"><p>High school is a critical period for cognitive and social development as students transition from adolescence to early adulthood. During this time, they typically experience significant growth in various areas:</p><h3>Cognitive Development</h3><ol><li><strong>Abstract Thinking</strong>: High school students begin to think more abstractly rather than concretely. They develop the ability to reason through hypothetical situations, understand abstract concepts, and engage in complex problem-solving.</li></ol><ol><li><strong>Metacognition</strong>: They become more aware of their own thought processes. This leads to better self-regulation, planning, and organization skills as they learn to evaluate and adapt their strategies for learning.</li></ol><ol><li><strong>Moral and Ethical Reasoning</strong>: Students start to explore and form their own values and beliefs. They can consider ethical dilemmas more deeply and understand different perspectives and the consequences of actions.</li></ol><ol><li><strong>Increased Cognitive Flexibility</strong>: They develop the ability to switch between thinking about different concepts or to think about multiple concepts simultaneously, which facilitates multi-tasking and adaptability in learning.</li></ol><ol><li><strong>Enhanced Memory and Attention</strong>: Their ability to focus and retain information improves, which supports more complex learning and academic achievements.</li></ol><h3>Social Development</h3><ol><li><strong>Identity Formation</strong>: This stage is critical for developing a sense of self. Students explore personal identity, including their values, beliefs, and goals. They might experiment with different roles and peer groups as part of this process.</li></ol><ol><li><strong>Peer Relationships</strong>: Friendships become more important and influential. Peer pressure can play a significant role in decision-making. Students learn to form deeper, more meaningful connections based on mutual interests and loyalty.</li></ol><ol><li><strong>Independence and Autonomy</strong>: Adolescents work towards achieving greater independence from parents and seek more control over their lives and decisions.</li></ol><ol><li><strong>Social Skills</strong>: They refine social skills, such as communication, cooperation, and conflict resolution, through interactions with peers and adults.</li></ol><ol><li><strong>Emotional Development</strong>: Students experience more complex emotional experiences and begin to manage emotions more effectively. They become more empathetic and capable of understanding the emotions of others.</li></ol><h3>Role of Teachers and Faculty</h3><ol><li><strong>Facilitators of Learning</strong>: Teachers guide students through the learning process by presenting information in a way that is engaging and accessible. They challenge students intellectually to develop critical thinking and problem-solving skills.</li></ol><ol><li><strong>Mentors and Role Models</strong>: Teachers and faculty serve as positive role models and mentors, providing guidance and support. They help students navigate academic and personal challenges.</li></ol><ol><li><strong>Support for Social and Emotional Growth</strong>: Teachers provide a safe and supportive environment for students to express themselves. They teach and reinforce positive social behaviors and help students develop communication skills and emotional intelligence.</li></ol><ol><li><strong>Encouragement of Exploration</strong>: They encourage students to explore their interests and passions, which supports identity development. Clubs, sports, and other extracurricular activities often facilitated by faculty play a key role in this process.</li></ol><ol><li><strong>Providing Structure</strong>: Teachers provide clear expectations and consistent boundaries, which are crucial for helping students develop self-discipline and accountability.</li></ol><ol><li><strong>Counseling and Guidance</strong>: School counselors and faculty offer support in college and career planning, as well as in personal issues that students may face. They help students set goals and make informed decisions about their futures.</li></ol><p>By supporting cognitive and social development, teachers and faculty contribute significantly to preparing students for the responsibilities and challenges of adulthood.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 29 in / 684 out / 713 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-1.5-pro</span></div>
+                    <div class="model-content"><h2>Cognitive and Social Development in High School</h2><p>High school is a period of significant cognitive and social development, laying the foundation for adulthood.</p><p><strong>Cognitive Development:</strong></p><ul><li><strong>Abstract Thinking:</strong>Students move beyond concrete thinking and develop the ability to understand abstract concepts, hypothesize, analyze different perspectives, and engage in critical thinking.  This allows them to tackle complex academic subjects like algebra, physics, and philosophy.</li><li><strong>Metacognition:</strong>They become more aware of their own thinking processes, including how they learn, solve problems, and make decisions. This improved metacognition helps with self-regulation and academic success.</li><li><strong>Information Processing:</strong>Improvements in attention, memory, and processing speed enable students to handle more complex information and tasks. They become better at planning, organizing, and prioritizing their work.</li><li><strong>Knowledge and Skills:</strong>They acquire a broader base of knowledge and skills across various disciplines, preparing them for further education or career paths. This includes specialized knowledge in chosen subjects and development of critical skills like research, analysis, and communication.</li></ul><p><strong>Social Development:</strong></p><ul><li><strong>Identity Formation:</strong>High school is a crucial time for exploring and establishing personal identity. Students experiment with different roles, values, and beliefs to define who they are and what&#x27;s important to them.</li><li><strong>Social Relationships:</strong>Peer relationships become increasingly important, influencing social and emotional well-being. Students navigate complex social dynamics, including friendships, romantic relationships, peer pressure, and social hierarchies.</li><li><strong>Independence and Autonomy:</strong>They strive for greater independence from parents and authority figures, developing self-reliance and decision-making skills. This includes taking responsibility for their actions and managing their time and resources.</li><li><strong>Moral Development:</strong>Students grapple with complex moral and ethical dilemmas, developing their own sense of right and wrong. They learn to consider different perspectives and make informed ethical choices.</li><li><strong>Emotional Regulation:</strong>While emotional volatility can be present, students typically develop better emotional regulation skills, managing their emotions and coping with stress and challenges.</li></ul><p><strong>Role of Teachers and Faculty:</strong></p><p>Teachers and faculty play a vital role in supporting students&#x27; cognitive and social development during high school. They:</p><ul><li><strong>Facilitate Cognitive Growth:</strong>They create learning environments that encourage critical thinking, problem-solving, and creativity. They provide challenging and engaging curriculum that promotes deep learning and knowledge acquisition.</li><li><strong>Support Metacognitive Development:</strong>They model effective learning strategies and provide opportunities for students to reflect on their learning processes. They encourage self-assessment and goal setting.</li><li><strong>Foster Social and Emotional Learning:</strong>They create a positive and supportive classroom climate that promotes respect, empathy, and collaboration. They provide opportunities for students to develop social skills, manage conflict, and build healthy relationships.</li><li><strong>Guide Identity Exploration:</strong>They create safe spaces for students to explore their interests, values, and beliefs. They provide opportunities for self-expression and encourage students to develop their unique talents.</li><li><strong>Promote Independence and Responsibility:</strong>They gradually increase student autonomy and provide opportunities for leadership and decision-making. They encourage students to take ownership of their learning and develop self-management skills.</li><li><strong>Mentor and Advise:</strong>They serve as mentors and advisors, providing guidance and support to students as they navigate the challenges of high school. They help students with academic planning, college applications, and career exploration.</li><li><strong>Collaborate with Parents and Families:</strong>They establish open communication with parents and families to support student learning and development. They work together to address any challenges or concerns.</li></ul><p>By fostering a supportive and challenging learning environment, teachers and faculty can empower high school students to reach their full potential, both academically and socially, preparing them for success in adulthood.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 22 in / 757 out / 779 total
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

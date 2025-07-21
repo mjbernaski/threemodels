@@ -1,0 +1,19 @@
+{
+  "name": "three-models",
+  "version": "1.0.0",
+  "description": "Multi-model AI conversation system",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node run.js",
+    "stream": "node src/index-streaming.js",
+    "test": "node test.js",
+    "simple": "node src/simple.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "@google/generative-ai": "^0.12.0",
+    "openai": "^4.52.0",
+    "dotenv": "^16.4.5"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "start_time": "2025-01-21T10:00:00Z",
+    "total_rounds": 1,
+    "last_updated": "2025-01-21T10:05:00Z"
+  },
+  "rounds": [
+    {
+      "id": 1,
+      "timestamp": "2025-01-21T10:01:00Z",
+      "userPrompt": "Show me various list examples",
+      "responses": {
+        "Anthropic": {
+          "model": "Claude 3",
+          "content": "Here are different list formats:\n\n1. First item\n1. Second item\n1. Third item\n\nAnother list:\n\n1. Item one\n2. Item two\n3. Item three\n\nMixed content:\n\n1. Step one\nSome text here\n2. Step two\nMore text\n3. Step three",
+          "usage": {"input_tokens": 10, "output_tokens": 20, "total_tokens": 30}
+        }
+      }
+    }
+  ]
+}
