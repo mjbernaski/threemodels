@@ -53,6 +53,7 @@ async def main():
     print('Commands:')
     print('  - Type your prompt and press Enter to send to all models')
     print('  - Type "assess" to have models analyze the previous responses')
+    print('  - Type "reset" to clear conversation and start fresh')
     print('  - Type "exit" to quit and save the conversation\n')
     
     running = True
@@ -76,6 +77,11 @@ async def main():
                 await generate_and_open_html()
                 print('Goodbye!')
                 break
+
+            if user_input.lower() == 'reset':
+                conversation = ConversationManager()
+                print('\n🔄 Conversation reset. Starting fresh!')
+                continue
 
             # Handle file input with @ prefix
             if user_input.startswith('@'):

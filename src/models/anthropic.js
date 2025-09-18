@@ -39,9 +39,27 @@ export class AnthropicModel extends BaseModel {
         usage
       };
     } catch (error) {
+      // Provide more detailed error information
+      let detailedError;
+      const errorMsg = error.message.toLowerCase();
+
+      if (errorMsg.includes('connection') || errorMsg.includes('timeout') || errorMsg.includes('network')) {
+        detailedError = `Network connection error: ${error.message}`;
+      } else if (errorMsg.includes('api') && errorMsg.includes('key')) {
+        detailedError = `API key error: ${error.message}`;
+      } else if (errorMsg.includes('rate') && errorMsg.includes('limit')) {
+        detailedError = `Rate limit exceeded: ${error.message}`;
+      } else if (errorMsg.includes('quota') || errorMsg.includes('billing')) {
+        detailedError = `Quota/billing issue: ${error.message}`;
+      } else if (errorMsg.includes('overload')) {
+        detailedError = `Service overloaded: ${error.message}`;
+      } else {
+        detailedError = `API error: ${error.message}`;
+      }
+
       return {
         model: this.name,
-        error: error.message
+        error: detailedError
       };
     }
   }

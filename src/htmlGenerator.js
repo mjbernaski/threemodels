@@ -322,7 +322,7 @@ export async function generateAndOpenHtml(jsonFilePath = 'conversation.json', ou
       // Model mapping to show both vendor and specific model names
       const modelNames = {
         'Anthropic': 'Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span>',
-        'OpenAI': 'OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-4.1</span>',
+        'OpenAI': 'OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span>',
         'Gemini': 'Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span>'
       };
 

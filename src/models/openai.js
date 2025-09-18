@@ -13,9 +13,9 @@ export class OpenAIModel extends BaseModel {
   async sendMessage(messages, onChunk) {
     try {
       const stream = await this.client.chat.completions.create({
-        model: 'gpt-4o',
+        model: 'gpt-5',
         messages: messages,
-        max_tokens: 4096,
+        max_completion_tokens: 4096,
         stream: true
       });
       

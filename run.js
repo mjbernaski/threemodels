@@ -42,6 +42,7 @@ async function main() {
   console.log('Commands:');
   console.log('  - Type your prompt and press Enter to send to all models');
   console.log('  - Type "assess" to have models analyze the previous responses');
+  console.log('  - Type "reset" to clear conversation and start fresh');
   console.log('  - Type "exit" to quit and save the conversation\n');
 
   let running = true;
@@ -61,6 +62,12 @@ async function main() {
         console.log('Goodbye!');
         running = false;
         break;
+      }
+
+      if (input.toLowerCase() === 'reset') {
+        conversation = new ConversationManager();
+        console.log('\n🔄 Conversation reset. Starting fresh!');
+        continue;
       }
       
       if (input.toLowerCase() === 'assess') {
