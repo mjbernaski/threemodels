@@ -31,7 +31,7 @@ async function main() {
   }
 
   const models = createModels();
-  const conversation = new ConversationManager();
+  let conversation = new ConversationManager();
   
   try {
     await conversation.load();
@@ -76,15 +76,23 @@ async function main() {
           console.log('No previous responses to assess.');
           continue;
         }
-        
+
         const lastRound = conversation.conversation.rounds[conversation.conversation.rounds.length - 1];
+
+        // Skip if the last round was already an assessment
+        if (lastRound.isAssessment) {
+          console.log('The last round was already an assessment. Please ask a new question first.');
+          continue;
+        }
+
         const assessmentPrompt = conversation.formatAssessmentPrompt(
           lastRound.userPrompt,
           lastResponses
         );
         
         console.log('\nSending assessment request to all models...\n');
-        
+        console.log('📝 Assessment prompt preview:', assessmentPrompt.substring(0, 200) + '...');
+
         const assessmentMessages = [{
           role: 'user',
           content: assessmentPrompt

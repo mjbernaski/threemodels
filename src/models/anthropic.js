@@ -13,7 +13,7 @@ export class AnthropicModel extends BaseModel {
   async sendMessage(messages, onChunk) {
     try {
       const stream = await this.client.messages.create({
-        model: 'claude-3-5-sonnet-latest',
+        model: 'claude-sonnet-4-20250514',
         max_tokens: 4096,
         messages: this.formatMessages(messages),
         stream: true
@@ -39,22 +39,32 @@ export class AnthropicModel extends BaseModel {
         usage
       };
     } catch (error) {
-      // Provide more detailed error information
-      let detailedError;
-      const errorMsg = error.message.toLowerCase();
+      // Enhanced error handling with more context
+      console.error('🚨 ANTHROPIC ERROR DEBUG:', error);
 
-      if (errorMsg.includes('connection') || errorMsg.includes('timeout') || errorMsg.includes('network')) {
-        detailedError = `Network connection error: ${error.message}`;
+      let detailedError;
+      const errorMsg = error.message?.toLowerCase() || '';
+      const statusCode = error.status || error.response?.status;
+      const errorType = error.error?.type || '';
+
+      if (statusCode === 401) {
+        detailedError = `Authentication failed (401): Check API key validity`;
+      } else if (statusCode === 429) {
+        detailedError = `Rate limited (429): Too many requests, try again later`;
+      } else if (statusCode === 500 || statusCode === 502 || statusCode === 503) {
+        detailedError = `Anthropic server error (${statusCode}): Service temporarily unavailable`;
+      } else if (statusCode === 400) {
+        detailedError = `Invalid request (400): ${error.message}`;
+      } else if (errorType === 'overloaded_error') {
+        detailedError = `Service overloaded: Anthropic servers are experiencing high demand`;
+      } else if (errorMsg.includes('connection') || errorMsg.includes('timeout') || errorMsg.includes('network') || errorMsg.includes('enotfound') || errorMsg.includes('econnreset')) {
+        detailedError = `Network connection error: Unable to reach Anthropic servers - ${error.message}`;
       } else if (errorMsg.includes('api') && errorMsg.includes('key')) {
         detailedError = `API key error: ${error.message}`;
-      } else if (errorMsg.includes('rate') && errorMsg.includes('limit')) {
-        detailedError = `Rate limit exceeded: ${error.message}`;
       } else if (errorMsg.includes('quota') || errorMsg.includes('billing')) {
         detailedError = `Quota/billing issue: ${error.message}`;
-      } else if (errorMsg.includes('overload')) {
-        detailedError = `Service overloaded: ${error.message}`;
       } else {
-        detailedError = `API error: ${error.message}`;
+        detailedError = `Anthropic API error${statusCode ? ` (${statusCode})` : ''}: ${error.message}`;
       }
 
       return {

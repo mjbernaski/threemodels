@@ -105,14 +105,21 @@ async def main():
                 if not last_responses:
                     print('No previous responses to assess.')
                     continue
-                
+
                 last_round = conversation.conversation['rounds'][-1]
+
+                # Skip if the last round was already an assessment
+                if last_round.get('isAssessment', False):
+                    print('The last round was already an assessment. Please ask a new question first.')
+                    continue
+
                 assessment_prompt = conversation.format_assessment_prompt(
                     last_round['userPrompt'],
                     last_responses
                 )
                 
                 print('\nSending assessment request to all models...\n')
+                print(f'📝 Assessment prompt preview: {assessment_prompt[:200]}...')
 
                 assessment_messages = [{
                     'role': 'user',
