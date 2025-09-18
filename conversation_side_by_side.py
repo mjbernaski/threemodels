@@ -309,16 +309,19 @@ def create_side_by_side_html(json_file_path, output_file_path):
         
         # Model mapping to show both vendor and specific model names
         model_names = {
-            'Anthropic': 'Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-3-5-sonnet-20241022</span>',
-            'OpenAI': 'OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-4o</span>', 
-            'Gemini': 'Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-1.5-pro</span>'
+            'Anthropic': 'Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span>',
+            'OpenAI': 'OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-4.1</span>', 
+            'Gemini': 'Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span>'
         }
         
         models = ['Anthropic', 'OpenAI', 'Gemini']
         for model in models:
             if model in round_data['responses']:
                 response = round_data['responses'][model]
-                content = markdown_to_html(response['content'])
+                if 'error' in response:
+                    content = f"<p style='color: #e74c3c;'><strong>Error:</strong> {response['error']}</p>"
+                else:
+                    content = markdown_to_html(response.get('content', ''))
                 usage = response.get('usage', {})
                 
                 header_class = f"{model.lower()}-header"

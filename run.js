@@ -3,6 +3,7 @@ import readline from 'readline';
 import { validateConfig } from './src/config.js';
 import { createModels, callModelsInParallel } from './src/models/index.js';
 import { ConversationManager } from './src/conversation.js';
+import { generateAndOpenHtml } from './src/htmlGenerator.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -55,7 +56,9 @@ async function main() {
       
       if (input.toLowerCase() === 'exit') {
         await conversation.save();
-        console.log('\nConversation saved. Goodbye!');
+        console.log('\nConversation saved. Generating HTML...');
+        await generateAndOpenHtml();
+        console.log('Goodbye!');
         running = false;
         break;
       }
@@ -93,6 +96,7 @@ async function main() {
         
         conversation.addRound(assessmentPrompt, responses, true);
         await conversation.save();
+        await generateAndOpenHtml();
         continue;
       }
       
@@ -117,6 +121,7 @@ async function main() {
       
       conversation.addRound(input, responses);
       await conversation.save();
+      await generateAndOpenHtml();
       
     } catch (error) {
       console.error('\nError:', error.message);
