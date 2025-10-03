@@ -5,15 +5,19 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
+    "preweb": "npm install --no-fund --no-audit",
     "start": "node run.js",
     "stream": "node src/index-streaming.js",
     "test": "node test.js",
-    "simple": "node src/simple.js"
+    "simple": "node src/simple.js",
+    "web": "node web-server.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",
     "@google/generative-ai": "^0.12.0",
     "openai": "^4.52.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
   }
 }

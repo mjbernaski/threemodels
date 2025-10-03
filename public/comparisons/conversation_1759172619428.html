@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        .model-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-29T19:03:01.980Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-29T19:03:39.427Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-29T19:03:39.427Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>who was the better President:   John Adams or John Quincy?</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>This is a fascinating comparison between father and son presidents, each with distinct strengths and challenges.</p><p><strong>John Adams (1797-1801)</strong>arguably had the more difficult presidency but handled it with notable skill:<ul><li>Successfully navigated the &quot;Quasi-War&quot; with France without full-scale conflict</li><li>Maintained American neutrality despite intense partisan pressure</li><li>Helped establish presidential precedents and federal institutions</li><li>Made the crucial decision to avoid war, likely saving the young republic</li></ul></p><p><strong>John Quincy Adams (1825-1829)</strong>was perhaps more visionary but less effective politically:<ul><li>Had an ambitious domestic agenda including infrastructure, education, and scientific advancement</li><li>Was highly intelligent and well-prepared for the role</li><li>Faced intense political opposition that largely stymied his presidency</li><li>Had greater impact as a post-presidential congressman fighting slavery</li></ul></p><p><strong>The case for John Adams:</strong>He faced more immediate existential threats to the nation and successfully steered the country through them, even at great personal political cost.</p><p><strong>The case for John Quincy Adams:</strong>His vision for America&#39;s development was more forward-thinking, and his later congressional career was historically significant.</p><p>Most historians would likely give the edge to<strong>John Adams</strong>as the more successful president, primarily because he managed serious crises effectively and helped establish the presidency&#39;s foundations, while John Quincy Adams struggled to implement his agenda due to political constraints.</p><p>What aspects of their presidencies do you find most interesting?</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 22 in / 312 out / 0 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>Short answer: John Adams, by a bit.</p><p>Why historians generally rate John Adams higher as president:<ul><li>Kept the U.S. out of a full-scale war with France during the Quasi-War, concluding peace via the Convention of 1800—an unpopular but statesmanlike decision.</li><li>Strengthened national capacity by expanding the Navy and creating the Department of the Navy and reestablishing the Marine Corps.</li><li>Presided over the first peaceful transfer of power between parties (1801), reinforcing republican norms.</li><li>Major blemish: signed the Alien and Sedition Acts, a serious strike against civil liberties that damaged his legacy and party.</li></ul></p><p>Why John Quincy Adams rates lower as president (despite his brilliance):<ul><li>Entered office under the cloud of the “corrupt bargain” and faced a hostile, Jacksonian Congress.</li><li>Advanced a far-sighted national program (internal improvements, scientific institutions), but achieved little of it legislatively.</li><li>Tariff of 1828 (“Tariff of Abominations”) hurt him politically.</li><li>His greatest achievements lay outside the presidency—pre-presidency as a diplomat (key architect of the Monroe Doctrine) and post-presidency as a leading anti-slavery congressman.</li></ul></p><p>Bottom line: If judging strictly on presidential effectiveness and outcomes while in office, John Adams tends to come out ahead. If judging by long-term vision and lifetime public service, John Quincy Adams has a strong claim—but his presidency itself was less effective.</p></div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>This is an excellent historical debate, as it pits two remarkably similar, brilliant, and principled men against each other who both had difficult, single-term presidencies. There is no single right answer, but we can break down their presidencies to see who has the stronger case.</p><p>The verdict often comes down to what you value more:<strong>navigating an immediate national crisis</strong>versus<strong>possessing a forward-thinking (but failed) vision.</strong></p><p>Here is a comparison of their presidencies, with a verdict at the end.</p><p>---</p><h3>John Adams (2nd President, 1797-1801)</h3><p>John Adams inherited a nation on the brink of war, deeply divided by partisan politics, and struggling to establish its place in the world.</p><p><strong>The Case for John Adams being the better President:</strong></p><ul><li><strong>He Kept the Nation Out of a Major War:</strong>This is his single greatest achievement. His own Federalist party, led by Alexander Hamilton, was clamoring for war with France following the XYZ Affair. Adams, recognizing the young nation was unprepared for such a conflict, resisted immense pressure and pursued a diplomatic solution. This decision likely saved the fragile republic but cost him his political career and the 2nd term. It was an act of profound political courage.</li><li><strong>&quot;Father of the American Navy&quot;:</strong>To prepare for potential conflict and protect American shipping, Adams robustly funded and built up the U.S. Navy, creating a vital institution for national defense for centuries to come.</li><li><strong>Peaceful Transfer of Power:</strong>Though embittered by his loss to Thomas Jefferson in the &quot;Revolution of 1800,&quot; Adams established the crucial precedent of a peaceful transition of power from one party to its rival. This was a monumental, if begrudging, moment for American democracy.</li></ul><p><strong>The Case Against John Adams:</strong></p><ul><li><strong>The Alien and Sedition Acts (1798):</strong>This is the great stain on his presidency. These laws were a direct assault on the First Amendment, making it a crime to criticize the government and giving the president power to deport &quot;dangerous&quot; foreigners. They were used to suppress political dissent and jail his political opponents (mostly Democratic-Republican newspaper editors). It was a profound betrayal of the revolutionary principles he helped champion.</li></ul><p>---</p><h3>John Quincy Adams (6th President, 1825-1829)</h3><p>The son of John Adams, JQA was arguably the most qualified man to ever become president, having served as a brilliant diplomat and one of America&#39;s greatest Secretaries of State.</p><p><strong>The Case for John Quincy Adams being the better President:</strong></p><ul><li><strong>A Grand, Forward-Thinking Vision:</strong>JQA had an ambitious plan for the nation, what Henry Clay called the &quot;American System.&quot; He wanted to use federal power to build roads and canals (&quot;internal improvements&quot;), fund a national university, build astronomical observatories, and promote scientific exploration. He saw a future for America as a powerful, unified, and enlightened nation.</li><li><strong>Unimpeachable Personal Integrity:</strong>Adams was rigidly moral and refused to engage in the political patronage and back-room dealing that was becoming common. He appointed people based on merit, not party loyalty, and refused to fire his political opponents from government jobs.</li></ul><em><strong>Pre-Presidential and Post-Presidential Career:</strong>While not part of his presidency, his overall career is staggering. As Secretary of State, he negotiated the acquisition of Florida from Spain and was the chief architect of the Monroe Doctrine. After his presidency, he served in Congress for 17 years as a fierce and eloquent opponent of slavery, famously arguing the</em>Amistad* case before the Supreme Court.</p><p><strong>The Case Against John Quincy Adams:</strong></p><p><ul><li><strong>The &quot;Corrupt Bargain&quot;:</strong>He entered office under a cloud of suspicion. In the 1824 election, no candidate won an electoral majority, and the vote went to the House. Speaker of the House Henry Clay threw his support behind Adams, who then won. When Adams promptly named Clay his Secretary of State, Andrew Jackson&#39;s supporters furiously cried &quot;Corrupt Bargain,&quot; a charge that crippled his presidency from day one and made him seem illegitimate.</li><li><strong>Politically Ineffective:</strong>His grand vision for the country went almost nowhere. He was a terrible politician who could not build coalitions or inspire public support. Congress, dominated by his Jacksonian opponents, blocked nearly all of his ambitious proposals. His presidency was largely a four-year legislative stalemate.</li></ul><p>---</p><h3>The Verdict</h3><p>While both were flawed presidents,<strong>John Adams was likely the better and more consequential<em>President</em>.</strong></p><p>Here’s why:</p><ol><li><strong>The Nature of the Crisis:</strong>John Adams faced an existential crisis—a potential war that could have destroyed the young United States. He successfully navigated it through sheer force of will and political sacrifice. John Quincy Adams faced a political crisis of legitimacy and gridlock, which, while damaging, did not threaten the nation&#39;s survival in the same way.</li><li><strong>Tangible Accomplishments:</strong>Adams&#39;s major accomplishment—avoiding war with France—was a monumental success that directly secured the nation&#39;s future. JQA&#39;s accomplishments were largely unrealized visions. He had the right ideas, but as president, he failed to make them a reality.</li><li><strong>The Scale of the Failure:</strong>Both had a signature failure. JQA&#39;s &quot;Corrupt Bargain&quot; was a political blunder that led to inaction. JA&#39;s Alien and Sedition Acts were an active and unconstitutional assault on American liberty. While JA&#39;s failure was morally worse, his primary success (avoiding war) was far more critical to the nation&#39;s survival than anything JQA failed to achieve.</li></ol><p><strong>Conclusion:</strong></p><ul><li><strong>Vote for John Adams</strong>if you believe the most important job of a president is to successfully navigate the single greatest crisis facing the nation, even if it means making other terrible mistakes.</li><li><strong>Vote for John Quincy Adams</strong>if you value vision, integrity, and a leader who was ahead of his time, even if he lacked the political skill to implement his ideas.</li></ul><p>Ultimately, John Adams&#39;s presidency, for all its deep flaws, was more consequential. He made a decision that, while politically fatal for him, was essential for the country. John Quincy Adams may have been the more admirable man over the course of his entire life, but his presidency was largely a story of noble failure.</p></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

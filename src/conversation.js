@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 export class ConversationManager {
-  constructor(filename = 'conversation.json') {
+  constructor(filename = path.join('data', 'conversations', 'conversation.json')) {
     this.filename = filename;
     this.conversation = {
       rounds: [],
@@ -23,6 +23,12 @@ export class ConversationManager {
   }
 
   async save() {
+    // Ensure the output directory exists
+    try {
+      await fs.mkdir(path.dirname(this.filename), { recursive: true });
+    } catch (e) {
+      // ignore mkdir errors; write will surface issues
+    }
     await fs.writeFile(this.filename, JSON.stringify(this.conversation, null, 2));
   }
 

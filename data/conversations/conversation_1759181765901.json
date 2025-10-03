@@ -1,0 +1,37 @@
+{
+  "rounds": [
+    {
+      "id": 1,
+      "timestamp": "2025-09-29T21:36:26.292Z",
+      "userPrompt": "When does Congress go out of session?",
+      "responses": {
+        "Anthropic": {
+          "model": "Anthropic",
+          "content": "Congress doesn't have a single fixed date for going out of session, as it varies by year and circumstances. Here's the general pattern:\n\n**Regular Schedule:**\n- Congress typically aims to adjourn for the year in mid-to-late December\n- They usually take a summer recess in August\n- There are also shorter recesses throughout the year for holidays and district work periods\n\n**Variables:**\n- Election years: Congress often adjourns earlier (sometimes October) so members can campaign\n- Urgent business: Sessions can be extended if critical legislation needs to be passed\n- Budget deadlines: If spending bills aren't completed, sessions may run longer\n\n**Current Session:**\nFor the most up-to-date information on when the current Congress plans to adjourn, I'd recommend checking:\n- The House and Senate calendars on congress.gov\n- Congressional leadership announcements\n- News reports from congressional reporters\n\nThe exact adjournment date is usually announced by congressional leadership closer to the time, as it depends on their legislative agenda and priorities.",
+          "usage": {
+            "input_tokens": 15,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 222
+          }
+        },
+        "OpenAI": {
+          "model": "OpenAI",
+          "content": "There isn’t a single fixed date when “Congress goes out of session.”\n\n- Each chamber (House and Senate) sets its own calendar and takes recesses throughout the year (notably an August recess and breaks around holidays).\n- By constitutional custom, a new session begins on January 3. Each annual session typically wraps up in December, but the exact adjournment date varies year to year and is set by an adjournment resolution. The second session’s final adjournment (in even-numbered years) ends that two-year Congress.\n- They also hold brief “pro forma” sessions during some breaks, so they’re not always technically out of session.\n\nIf you tell me the chamber and year you care about, I can give the planned recess and adjournment dates for that schedule.",
+          "usage": null
+        },
+        "Gemini": {
+          "model": "Gemini",
+          "content": "That's an excellent question with a more complex answer than you might expect. There isn't a single, fixed date like the last day of school. The schedule is flexible and politically determined.\n\nHere’s a breakdown of when and how Congress goes out of session.\n\n### The Short Answer\n\nCongress typically aims to adjourn for the year sometime in **mid-to-late December**. However, the exact date changes every year and often gets pushed back due to last-minute negotiations on major legislation, like the federal budget.\n\n---\n\n### The Detailed Explanation: Key Concepts\n\nTo understand the schedule, you need to know the difference between a \"recess\" and an \"adjournment.\"\n\n#### 1. Recess (Taking a Break)\nA **recess** is a temporary break within a congressional session. The House and Senate take several of these throughout the year. During a recess, members often return to their home states and districts to meet with constituents.\n\nCommon recesses include:\n*   **State/District Work Periods:** Several week-long breaks scheduled throughout the year (e.g., Presidents' Day, Memorial Day, July 4th).\n*   **August Recess:** The longest break of the year, typically lasting four to five weeks.\n*   **Thanksgiving Recess:** Usually a one-week break.\n\nEven during a recess, Congress can be called back to Washington, D.C., to deal with an emergency.\n\n#### 2. Adjournment (Ending the Session for the Year)\nThis is what most people mean when they ask when Congress \"goes out of session.\" The formal end of a session for the year is called an **adjournment *sine die*** (a Latin term meaning \"without a day\"). This signifies that the session is over, and Congress will not meet again until the next session begins in January.\n\n*   A \"Congress\" (e.g., the 118th Congress) lasts for two years.\n*   Each two-year term is divided into two **sessions**, each lasting about one year.\n*   The adjournment *sine die* in December marks the end of the first or second session of that Congress.\n\n### The Typical Congressional Calendar Rhythm\n\nWhile the exact dates are set by the Majority Leaders in the House and Senate, a typical year looks like this:\n\n*   **January:** A new session begins.\n*   **February - July:** In session, with several one- or two-week recesses for holidays and district work.\n*   **August:** The long August recess.\n*   **September - October:** A busy period focused on passing spending bills before the fiscal year ends on September 30th.\n*   **November (Election Year):** Members typically go on a long recess before the November election to campaign. After the election, they return for a **\"lame-duck\" session**, where they try to pass legislation before the new Congress is sworn in.\n*   **December:** A final, intense push to pass any remaining critical legislation, followed by the adjournment *sine die*.\n\n### How to Find the Current Schedule\n\nThe most accurate information comes directly from Congress itself. These calendars are set at the beginning of the year but are always subject to change.\n\n*   **House of Representatives Calendar:** The House Clerk publishes the official legislative calendar for the year.\n    *   [**2024 House Calendar**](https://www.majorityleader.gov/calendar)\n*   **Senate Calendar:** The Senate Majority Leader's office typically posts the schedule.\n    *   [**2024 Senate Calendar**](https://www.democrats.senate.gov/2024-schedule)\n*   **Congress.gov:** This is the official U.S. government website for legislative information, which tracks the current status of the House and Senate.\n    *   [**Congress.gov Current Activity**](https://www.congress.gov/)\n\n### Summary\n\n| Term | Meaning | Typical Timing |\n| :--- | :--- | :--- |\n| **Recess** | A temporary break within a session. | Multiple times a year (holidays, August). |\n| **Adjournment *Sine Die*** | The final end of a session for the year. | **Mid-to-late December**. |",
+          "usage": null
+        }
+      },
+      "isAssessment": false
+    }
+  ],
+  "metadata": {
+    "startTime": "2025-09-29T21:36:05.901Z",
+    "totalRounds": 1,
+    "lastUpdated": "2025-09-29T21:36:26.292Z"
+  }
+}

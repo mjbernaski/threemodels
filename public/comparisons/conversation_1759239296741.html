@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: rgba(30, 30, 50, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: rgba(30, 30, 50, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            color: #e0e0e0;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #e0e0e0;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #2a2a3e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #444;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+
+        .model-content pre {
+            background: #444;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            color: #e0e0e0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-30T13:34:26.647Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-30T13:34:56.739Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-30T13:34:56.739Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>do airplanes stay in the troposphere</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>Airplanes operate at different altitudes depending on their type:</p><p><strong>Commercial airliners</strong>typically fly in the<strong>lower stratosphere</strong>, between about 30,000-42,000 feet (9-13 km). This puts them above most of the troposphere, which extends to roughly 20,000-65,000 feet depending on latitude and season.</p><p><strong>Smaller aircraft</strong>like private planes, regional jets, and general aviation aircraft usually stay within the<strong>troposphere</strong>, flying below 30,000 feet.</p><p><strong>Why commercial planes fly so high:</strong><ul><li>Less air turbulence in the stratosphere</li><li>Thinner air reduces drag, improving fuel efficiency</li><li>Above most weather systems</li><li>Less air traffic congestion</li></ul></p><p><strong>The boundary between layers:</strong><ul><li>The<strong>tropopause</strong>(boundary between troposphere and stratosphere) varies by location - it&#39;s lower at the poles (~20,000 ft) and higher at the equator (~65,000 ft)</li><li>Temperature stops decreasing with altitude at this boundary</li></ul></p><p>So while many aircraft do operate in the troposphere, the large commercial jets you see leaving contrails are typically flying in the stratosphere where the air is clearer and more stable for long-distance travel.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 16 in / 269 out / 0 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>Mostly, but not always.</p><ul><li>The troposphere extends from the surface up to about 8–18 km (26,000–59,000 ft), lower at the poles and higher in the tropics.</li><li>Commercial jet airliners typically cruise around 9–12 km (30,000–40,000 ft), usually in the upper troposphere and sometimes right at or just above the tropopause; at high latitudes they can be in the lower stratosphere.</li><li>Turboprops and small general-aviation airplanes fly lower, well within the troposphere.</li><li>Some aircraft fly in the stratosphere: business jets (45,000–51,000 ft), Concorde (~60,000 ft), U-2 (~70,000 ft), SR‑71 (~85,000 ft).</li></ul><p>Airliners aim for near-tropopause altitudes for fuel efficiency, smoother air, and favorable winds.</p></div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>That&#39;s an excellent question! The simple answer is<strong>mostly yes</strong>, but the more accurate answer is that commercial airplanes fly right at the<strong>boundary of the troposphere and the stratosphere</strong>.</p><p>Let&#39;s break it down.</p><h3>The General Rule: Commercial Airliners</h3><p>Most commercial airliners, the ones you take on vacation or for business, cruise at altitudes between<strong>30,000 and 42,000 feet</strong>(about 9 to 13 km).</p><p>This specific altitude range is a &quot;sweet spot&quot; located at the very top of the troposphere, right near or sometimes just inside the next layer up, the stratosphere. This boundary is called the<strong>tropopause</strong>.</p><p>#### Why do they fly so high, at the edge of the troposphere?</p><ol><li><strong>To Get Above the Weather:</strong>The troposphere is where almost all weather happens—clouds, rain, storms, and turbulence. By flying in the upper troposphere or just above it, airplanes can enjoy a much smoother ride and avoid weather-related delays.</li><li><strong>Fuel Efficiency:</strong>The air in the upper troposphere is much thinner than it is near the ground. Thinner air creates less drag on the aircraft, allowing it to fly faster and use significantly less fuel to maintain its speed.</li><li><strong>Jet Streams:</strong>Fast-moving currents of air called jet streams are located near the tropopause. Pilots can use these as a &quot;tailwind&quot; to increase their ground speed and save time and fuel on long-distance flights (e.g., flying east across the Atlantic).</li></ol><p>So, while they are technically<em>in</em>the troposphere for their entire cruise, they are right at its upper limit.</p><p>---</p><h3>The Exceptions: Aircraft That Fly Higher or Lower</h3><p>Not all aircraft stick to this rule.</p><p>#### Aircraft That Fly HIGHER (in the Stratosphere)</p><ul><li><strong>Military Jets &amp; Spy Planes:</strong>High-performance aircraft like fighter jets (F-22 Raptor) and especially reconnaissance planes like the U-2 and the legendary SR-71 Blackbird were designed to fly deep into the stratosphere. The SR-71 could cruise at over<strong>85,000 feet</strong>to fly too high and fast to be intercepted.</li><li><strong>Supersonic Transports (Historical):</strong>The Concorde flew at<strong>60,000 feet</strong>, well into the stratosphere. At that altitude, the air is so thin that it could maintain its incredible speed of Mach 2 (twice the speed of sound) efficiently.</li><li><strong>High-End Business Jets:</strong>Some private and business jets are certified to fly higher than commercial airliners (up to 51,000 feet) to get above commercial air traffic and find even smoother air.</li></ul><p>#### Aircraft That Fly LOWER (deep in the Troposphere)</p><ul><li><strong>Takeoff and Landing:</strong>Every flight begins and ends in the lower troposphere.</li><li><strong>Short-Haul Flights:</strong>On very short flights (e.g., an hour or less), it&#39;s not efficient to climb all the way to 35,000 feet just to immediately descend again. These flights will often cruise at lower altitudes.</li><li><strong>Smaller Aircraft:</strong>Propeller planes and small private jets don&#39;t have the engine power or pressurized cabins to fly at high altitudes, so they operate entirely within the lower and middle sections of the troposphere.</li></ul><h3>Summary Table</h3><p>| Aircraft Type | Typical Cruising Altitude | Atmospheric Layer | | :--- | :--- | :--- | |<strong>Commercial Airliner</strong>| 30,000 - 42,000 ft |<strong>Upper Troposphere / Tropopause</strong>| |<strong>Small Propeller Plane</strong>| 5,000 - 15,000 ft | Lower/Mid Troposphere | |<strong>High-Performance Business Jet</strong>| 40,000 - 51,000 ft | Tropopause / Lower Stratosphere | |<strong>Supersonic Jet (Concorde)</strong>| 60,000 ft | Stratosphere | |<strong>Spy Plane (SR-71 Blackbird)</strong>| 85,000+ ft | Stratosphere |</p><p><strong>In conclusion: Your typical passenger airplane spends most of its journey in the upper troposphere, right on the cusp of the stratosphere, to take advantage of fuel efficiency and smooth air. However, many other types of aircraft are designed to fly much higher or stay much lower depending on their specific purpose.</strong></p></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

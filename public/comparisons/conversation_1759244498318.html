@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: rgba(30, 30, 50, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: rgba(30, 30, 50, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            color: #e0e0e0;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #e0e0e0;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #2a2a3e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #444;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+
+        .model-content pre {
+            background: #444;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            color: #e0e0e0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-30T15:00:33.697Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-30T15:01:38.316Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-30T15:01:38.316Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>are there any AI companies based in MN?</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>Yes, there are several AI companies based in Minnesota, though the state isn&#39;t as well-known for AI as places like Silicon Valley or Boston. Here are some notable ones:</p><p><strong>Established Companies:</strong><ul><li><strong>3M</strong>- The industrial giant has significant AI research and development, particularly in materials science and healthcare</li><li><strong>Medtronic</strong>- Uses AI extensively in medical devices and healthcare solutions</li><li><strong>Target</strong>- Heavy investment in AI for retail optimization, supply chain, and customer experience</li></ul></p><p><strong>AI-Focused Companies:</strong><ul><li><strong>Optum</strong>(UnitedHealth Group subsidiary) - Major healthcare AI initiatives</li><li><strong>H.B. Fuller</strong>- Uses AI for materials and adhesives development</li><li><strong>SPS Commerce</strong>- AI-powered supply chain solutions</li></ul></p><p><strong>Startups and Smaller Companies:</strong><ul><li>Various healthcare AI startups, particularly around the Twin Cities</li><li>Companies focused on agricultural AI (given Minnesota&#39;s strong ag sector)</li><li>Fintech AI companies</li></ul></p><p><strong>Academic Connections:</strong><ul><li>University of Minnesota has strong AI research programs that often spin off companies</li><li>Minnesota also benefits from being close to other Midwest AI hubs</li></ul></p><p>The Twin Cities area (Minneapolis-St. Paul) tends to be the main hub for these activities. While Minnesota may not have the density of pure-play AI companies found in coastal tech centers, it has a solid foundation of established companies integrating AI into their operations.</p><p>Would you like more details about any particular sector or type of AI company?</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 17 in / 319 out / 336 total<br>
+                        <strong>Response time:</strong> 8.69s
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 0 in / 0 out / 0 total<br>
+                        <strong>Response time:</strong> 64.62s
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>Yes, absolutely. Minnesota, particularly the Minneapolis-St. Paul metro area, has a robust and growing ecosystem of companies that are either AI-focused or leverage AI and machine learning as a core part of their business.</p><p>The state&#39;s AI scene is characterized by its strength in<strong>applied AI</strong>, where technology is used to solve real-world problems in major industries like healthcare, retail, agriculture, and manufacturing.</p><p>Here’s a breakdown of the types of AI companies and teams you&#39;ll find in Minnesota:</p><h3>1. Large Enterprises with Major AI/Data Science Teams</h3><p>Many of Minnesota&#39;s Fortune 500 companies have invested heavily in AI, making them some of the largest employers of data scientists and machine learning engineers in the state.</p><ul><li><strong>Optum / UnitedHealth Group (Minnetonka):</strong>A global leader in healthcare. Optum&#39;s AI teams work on everything from predictive analytics for patient outcomes and fraud detection to natural language processing (NLP) for clinical notes and optimizing claims processing.</li><li><strong>Target (Minneapolis):</strong>The retail giant uses AI and ML extensively for personalized recommendations, supply chain optimization, demand forecasting, computer vision in stores, and marketing analytics.</li><li><strong>Best Buy (Richfield):</strong>Similar to Target, they use AI for e-commerce personalization, customer service chatbots, supply chain logistics, and understanding customer behavior.</li><li><strong>3M (Maplewood):</strong>A diversified technology company that applies AI in materials science research, manufacturing process optimization (industrial IoT), computer vision for quality control, and NLP for analyzing scientific papers.</li><li><strong>Cargill (Wayzata):</strong>As a global food and agriculture corporation, Cargill uses AI for precision agriculture, optimizing commodity trading, monitoring crop health via satellite imagery, and improving supply chain efficiency.</li><li><strong>U.S. Bank (Minneapolis):</strong>A major financial institution using AI for fraud detection, credit risk assessment, algorithmic trading, and personalized digital banking experiences.</li></ul><h3>2. Established Tech Companies &amp; &quot;Unicorns&quot;</h3><p>These are pure-play technology companies headquartered in Minnesota that have AI/ML at their core.</p><ul><li><strong>Jamf (Minneapolis):</strong>A leader in Apple device management. Jamf uses machine learning for security threat detection and IT automation on Apple devices.</li><li><strong>Code42 (Minneapolis):</strong>A cybersecurity company focused on insider risk management. Their platform uses machine learning to detect unusual employee file activity that might signal a data leak or theft.</li><li><strong>SPS Commerce (Minneapolis):</strong>A cloud-based supply chain management company. They use AI to help retailers and suppliers manage their data, providing analytics and insights to improve efficiency.</li><li><strong>Calabrio (Minneapolis):</strong>Specializes in workforce engagement management for contact centers. They use AI for speech analytics, sentiment analysis on customer calls, and predictive analytics for call volumes.</li><li><strong>Total Expert (St. Louis Park):</strong>A marketing and customer engagement platform for the financial services industry (mortgage, banking). They use AI to automate marketing and predict which customers are most likely to need a new loan or service.</li></ul><h3>3. Emerging Startups &amp; Smaller Firms</h3><p>There is a vibrant startup scene with many companies building AI-powered products.</p><ul><li><strong>Inspectorio (Minneapolis):</strong>Provides an AI-powered platform for quality control and supply chain visibility, using computer vision and data analytics to inspect products and facilities remotely.</li><li><strong>Voxel (Minneapolis office):</strong>Uses computer vision and AI to analyze security camera footage in real-time to identify and prevent workplace accidents in warehouses and manufacturing plants.</li><li><strong>Branch (Minneapolis):</strong>While known for mobile linking, their platform uses sophisticated data models and machine learning to attribute user actions across different platforms.</li><li><strong>Dispatch (Bloomington):</strong>An on-demand delivery platform that uses AI for route optimization and logistics management.</li><li><strong>MentorMate (Minneapolis):</strong>A prominent software and data science consulting firm that builds custom AI and machine learning solutions for other businesses.</li></ul><h3>4. Healthcare &amp; MedTech AI</h3><p>Given Minnesota&#39;s strength in healthcare (home to Mayo Clinic and Medical Alley), this is a particularly strong sector for AI.</p><ul><li><strong>Mayo Clinic (Rochester):</strong>Not a company in the traditional sense, but a massive center for AI in medicine. They have numerous platforms and initiatives using AI for diagnostics, treatment planning, drug discovery, and analyzing medical images.</li><li><strong>Be The Match (Minneapolis):</strong>The national marrow donor program uses sophisticated algorithms and data science to match patients with donors, optimizing the chances of a successful transplant.</li><li><strong>Sansoro Health (now part of Datica):</strong>Focused on healthcare data integration, using AI-driven approaches to standardize and exchange health data between different systems.</li></ul><h3>The Broader AI Ecosystem</h3><p>Beyond the companies themselves, Minnesota has a strong supporting infrastructure:</p><ul><li><strong>University of Minnesota:</strong>A major research university with strong programs in computer science, data science, and robotics. The Minnesota Robotics Institute (MnRI) is a key hub for AI and automation research.</li><li><strong>Community &amp; Meetups:</strong>Groups like<strong>AI-MN</strong>and other tech organizations host regular events, fostering a sense of community and knowledge sharing.</li><li><strong>Venture Capital:</strong>Firms like<strong>Great North Ventures</strong>and<strong>Matchstick Ventures</strong>are actively investing in AI and tech startups in the region.</li></ul><p>In summary, while Minnesota may not have the same reputation as Silicon Valley, it has a deep and practical AI scene driven by major industries, a strong base of established tech companies, and a growing startup culture.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 0 in / 0 out / 0 total<br>
+                        <strong>Response time:</strong> 31.21s
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

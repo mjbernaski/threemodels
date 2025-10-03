@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .metadata {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .round {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .round-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .user-prompt {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .model-response {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .anthropic-header {
+            background: #7C3AED;
+        }
+        
+        .openai-header {
+            background: #10B981;
+        }
+        
+        .gemini-header {
+            background: #F59E0B;
+        }
+        
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .model-content code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        
+        .model-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        .model-content li {
+            margin: 5px 0;
+        }
+        
+        .model-content p {
+            margin: 10px 0;
+        }
+        
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .model-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .model-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+        
+        <div class="metadata">
+            <strong>Start Time:</strong> 2024-01-15T10:30:00<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2024-01-15T10:35:00
+        </div>
+        
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2024-01-15T10:30:00</div>
+            </div>
+            
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div>What is the meaning of life?</div>
+            </div>
+            
+            <div class="responses-grid">
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content">The meaning of life is a profound philosophical question that has been pondered by humans for millennia. While there's no single definitive answer, here are some perspectives:
+
+**Existentialist View:**
+- Life has no inherent meaning - we create our own purpose
+- The search for meaning itself gives life significance
+- Authenticity and personal choice define our existence
+
+**Religious/Spiritual Perspectives:**
+- Many traditions see life as a journey toward enlightenment or union with the divine
+- Purpose often involves serving others, growing spiritually, or fulfilling divine will
+- Life may be a test, learning experience, or opportunity for transcendence
+
+**Scientific/Evolutionary Perspective:**
+- From a biological standpoint, life's "meaning" is survival and reproduction
+- Consciousness and culture allow us to transcend basic biological imperatives
+- We can create meaning through relationships, creativity, and contribution to human knowledge
+
+**Practical Wisdom:**
+- Meaning often emerges from connection with others
+- Pursuing growth, learning, and helping others typically brings fulfillment
+- The journey of self-discovery and contribution to something larger than oneself
+
+Ultimately, the meaning of life may be deeply personal - what gives your life purpose, joy, and fulfillment. The question itself suggests we're capable of reflection and growth, which may be part of the answer.</div>
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 156 in / 342 out / 498 total
+                    </div>
+                </div>
+                
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content">The meaning of life is one of humanity's most enduring questions, and different philosophical traditions offer various answers:
+
+## Philosophical Approaches
+
+**Stoicism:** Life's meaning comes from living virtuously, accepting what we cannot control, and focusing on what we can influence.
+
+**Utilitarianism:** The meaning of life is to maximize happiness and well-being for the greatest number of people.
+
+**Existentialism:** Life has no predetermined meaning - we must create our own purpose through authentic choices and actions.
+
+## Religious Perspectives
+
+**Christianity:** Life's purpose is to love God and serve others, ultimately seeking salvation and eternal life.
+
+**Buddhism:** The goal is to achieve enlightenment by understanding the nature of suffering and following the Eightfold Path.
+
+**Islam:** Life's meaning is to worship Allah and live according to Islamic principles of justice, compassion, and submission.
+
+## Modern Scientific View
+
+From an evolutionary perspective, life's "meaning" is survival and reproduction. However, human consciousness allows us to transcend these basic drives and create complex cultural meanings.
+
+## Personal Meaning
+
+Many find meaning through:
+- **Relationships:** Love, family, friendship
+- **Work:** Contributing to society through meaningful labor
+- **Growth:** Learning, self-improvement, creativity
+- **Service:** Helping others and making a positive impact
+
+The search for meaning itself may be part of what makes us human - our capacity to ask "why" and seek purpose beyond mere survival.</div>
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 142 in / 298 out / 440 total
+                    </div>
+                </div>
+                
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content">The meaning of life is a question that has fascinated philosophers, theologians, and thinkers throughout history. Here are some key perspectives:
+
+## Major Philosophical Views
+
+**Existentialism (Sartre, Camus):**
+- Life has no inherent meaning
+- We must create our own purpose through authentic choices
+- The absurdity of existence can be embraced or overcome
+
+**Stoicism (Marcus Aurelius, Epictetus):**
+- Meaning comes from living virtuously
+- Focus on what you can control
+- Accept fate while striving for excellence
+
+**Utilitarianism (Bentham, Mill):**
+- Life's purpose is to maximize happiness
+- Actions are meaningful if they promote the greatest good
+
+## Religious Traditions
+
+**Abrahamic Faiths:** Life's meaning is to serve God, love others, and prepare for eternal life.
+
+**Eastern Traditions:** Purpose involves spiritual growth, enlightenment, and breaking free from suffering cycles.
+
+## Modern Perspectives
+
+**Scientific:** From an evolutionary standpoint, life's "meaning" is survival and reproduction, but human consciousness allows for deeper purpose.
+
+**Humanistic:** Meaning emerges from human potential, creativity, relationships, and contribution to society.
+
+## Practical Approaches
+
+Many find meaning through:
+- **Connection:** Deep relationships with family, friends, community
+- **Contribution:** Making a positive impact through work, service, or creativity
+- **Growth:** Continuous learning, self-improvement, and personal development
+- **Experience:** Appreciating beauty, joy, and the richness of human experience
+
+## The Search Itself
+
+Perhaps the meaning of life is found in the very act of searching for meaning - our capacity to wonder, reflect, and strive for something greater than ourselves.</div>
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 148 in / 312 out / 460 total
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

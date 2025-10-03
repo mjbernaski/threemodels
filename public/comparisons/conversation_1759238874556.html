@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: rgba(30, 30, 50, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: rgba(30, 30, 50, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            color: #e0e0e0;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #e0e0e0;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #2a2a3e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #444;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+
+        .model-content pre {
+            background: #444;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            color: #e0e0e0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-30T13:27:18.793Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-30T13:27:54.553Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-30T13:27:54.553Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>what is meant by ambient nursing</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>&quot;Ambient nursing&quot; isn&#39;t a widely recognized standard term in healthcare, but it could refer to a few related concepts:</p><h2>Possible Meanings:</h2><p><strong>1. Ambient Intelligence in Nursing</strong><ul><li>Use of smart technology and sensors in healthcare environments</li><li>Automated monitoring systems that track patients without direct intervention</li><li>Examples: motion sensors, smart beds, environmental monitoring systems</li></ul></p><p><strong>2. Environmental/Ambient Care</strong><ul><li>Focus on creating therapeutic environments that promote healing</li><li>Attention to lighting, noise levels, temperature, and overall atmosphere</li><li>Design of healing spaces that support patient wellbeing</li></ul></p><p><strong>3. Continuous Background Monitoring</strong><ul><li>Ongoing, unobtrusive patient observation</li><li>24/7 environmental awareness of patient status</li><li>Passive monitoring systems that alert nurses to changes</li></ul></p><p><strong>4. Ambient Assisted Living (AAL)</strong><ul><li>Technology-supported care for elderly or disabled patients</li><li>Smart home technologies that assist with daily activities</li><li>Remote monitoring and support systems</li></ul></p><p><h2>Context Matters</h2>The specific meaning would depend on where you encountered this term. Could you provide more context about where you saw or heard &quot;ambient nursing&quot;? This would help me give you a more precise explanation of what it means in that particular situation.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 13 in / 267 out / 0 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>“Ambient nursing” isn’t a formal specialty. It’s a newer, informal term with two related uses:</p><ul><li>Tech-enabled meaning (most common today): Nursing supported by “ambient” technologies that work in the background—listening, sensing, and auto-documenting—so nurses spend less time clicking and more time with patients. This comes from “ambient intelligence.”</li></ul>- Examples: AI that turns bedside conversations into draft notes; room sensors that detect turns/out-of-bed events; computer vision for fall risk; wearables streaming vitals to the EHR; RTLS auto-logging hand hygiene or staff presence.   - Goals: Reduce documentation burden, improve safety and throughput, surface early warnings.   - Considerations: Privacy/consent, data security, accuracy and bias, alarm fatigue, legal accountability, keeping a human-in-the-loop.</p><p><ul><li>Environmental care meaning (traditional): Nursing that deliberately manages the ambient environment—light, noise, temperature, air quality, odors—to promote comfort, sleep, and healing (echoing Nightingale’s environmental theory).</li></ul><p>If you meant one of these specifically (e.g., ambient documentation tools vs. environmental interventions), say which context you’re interested in and I can give more targeted detail.</p></div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>Of course. &quot;Ambient nursing&quot; is a modern approach to healthcare that uses advanced technology to automate and streamline the administrative tasks of nursing, allowing nurses to focus more on direct patient care.</p><p>Think of it as having a &quot;smart assistant&quot; or an &quot;invisible scribe&quot; in the room that handles the documentation for you.</p><p>Here’s a breakdown of what it means, its goals, and how it works.</p><p>---</p><h3>Core Concept</h3><p><strong>Ambient nursing</strong>is the application of<strong>ambient computing</strong>to the nursing workflow. Ambient computing refers to technology that is so seamlessly integrated into the environment that it operates in the background, almost invisibly, without requiring direct commands.</p><p>In a nursing context, this means using AI-powered tools, sensors, and voice recognition to automatically capture, process, and document clinical information during patient interactions.</p><h3>The Primary Goal</h3><p>The main goal of ambient nursing is to solve a major problem in modern healthcare:<strong>nurse burnout and administrative burden.</strong></p><p>Nurses today spend a significant portion of their shifts—sometimes up to 40%—on documentation, charting in the Electronic Health Record (EHR), and other administrative tasks. This takes them away from the patient&#39;s bedside, reduces job satisfaction, and can lead to errors.</p><p>Ambient nursing aims to:<ul><li><strong>Reduce Documentation Time:</strong>Drastically cut down the hours spent typing notes.</li><li><strong>Increase Face-to-Face Patient Time:</strong>Allow nurses to focus on assessing, comforting, and caring for patients.</li><li><strong>Improve the Quality of Documentation:</strong>Capture more detailed and accurate information from natural conversations rather than from memory after the fact.</li><li><strong>Decrease Nurse Burnout:</strong>By removing a major source of stress and frustration.</li></ul></p><p>---</p><h3>How It Works: Key Technologies</h3><p>Ambient nursing systems typically combine several technologies:</p><ol><li><strong>Voice Recognition &amp; Natural Language Processing (NLP):</strong></li></ol>*   Microphones (on a badge, in the room, or on a mobile device) capture the conversation between the nurse and the patient.     *   The AI transcribes the conversation in real-time.     *   NLP algorithms then &quot;understand&quot; the clinical context. They can identify key information like symptoms, vital signs mentioned, medication changes, patient concerns, and care plans.</p><p><ol><li><strong>Artificial Intelligence (AI) and Machine Learning (ML):</strong></li></ol>*   The AI engine structures the captured information into a coherent clinical note.     *   It can automatically populate the correct fields in the Electronic Health Record (EHR). For example, it can take the sentence, &quot;The patient says her pain is a 7 out of 10 in her left knee,&quot; and automatically enter &quot;7&quot; into the pain scale field and &quot;left knee&quot; into the location field.</p><p><ol><li><strong>Sensor Technology &amp; IoT (Internet of Things):</strong></li></ol>*   In more advanced systems, data can be pulled from smart devices like vital sign monitors, IV pumps, or smart beds. This information can be integrated directly into the patient&#39;s record without manual entry.</p><p>---</p><h3>A Practical Example: Before vs. After</h3><p><strong>Traditional Workflow (Before):</strong><ol><li>A nurse enters a patient&#39;s room to check on them.</li><li>The nurse asks questions, performs a physical assessment, and provides care.</li><li>The nurse tries to remember all the details of the interaction.</li><li>Later, the nurse goes to a computer workstation, logs into the EHR, and spends 10-15 minutes typing up a detailed note from memory.</li><li>This process is repeated for every patient, all shift long.</li></ol><p><strong>Ambient Nursing Workflow (After):</strong><ol><li>A nurse enters a patient&#39;s room with an ambient listening device active (with patient consent).</li><li>The nurse has a natural conversation with the patient and performs the assessment. The system listens in the background.</li><li>The AI automatically generates a draft of the clinical note, organized and structured correctly.</li><li>After leaving the room, the nurse receives a notification that the draft note is ready.</li><li>The nurse quickly reviews the note for accuracy, makes any necessary edits (which takes seconds or a minute), and signs off.</li></ol></p><h3>Benefits and Challenges</h3><p>| Benefits                                    | Challenges &amp; Considerations                   | | ------------------------------------------- | --------------------------------------------- | |<strong>Reduced Administrative Burden:</strong>Frees up significant time for nurses. |<strong>Patient Privacy &amp; Consent:</strong>Requires clear policies on consent and data security (HIPAA compliance is critical). | |<strong>Improved Patient Care:</strong>More time at the bedside leads to better patient relationships and outcomes. |<strong>Accuracy &amp; Reliability:</strong>The AI must be highly accurate. The &quot;human in the loop&quot; (the nurse&#39;s final review) is essential to catch errors. | |<strong>Higher Quality Data:</strong>Captures the full context of a conversation, leading to richer, more accurate notes. |<strong>Cost &amp; Implementation:</strong>These systems can be expensive to purchase and integrate with existing EHRs. | |<strong>Increased Job Satisfaction:</strong>Reduces a major source of stress and helps nurses focus on the rewarding aspects of their job. |<strong>Technological Limitations:</strong>Background noise, accents, and complex medical jargon can still be challenging for AI. | |<strong>Enhanced Patient Safety:</strong>Timely and accurate documentation reduces the risk of errors. |<strong>Workflow Integration:</strong>Requires training and a change in how nurses have traditionally worked. |</p><p>In summary,<strong>ambient nursing</strong>is about using intelligent technology to make the administrative side of nursing disappear into the background, allowing the human-to-human connection and clinical expertise of the nurse to take center stage once again.</p></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

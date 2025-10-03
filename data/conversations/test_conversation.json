@@ -1,0 +1,39 @@
+{
+  "rounds": [
+    {
+      "id": 1,
+      "timestamp": "2025-09-18T13:56:54.196972",
+      "userPrompt": "What is the capital of France?",
+      "responses": {
+        "Anthropic": {
+          "model": "Anthropic",
+          "error": "Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}, 'request_id': None}"
+        },
+        "OpenAI": {
+          "model": "OpenAI",
+          "content": "Paris.",
+          "usage": {
+            "prompt_tokens": 13,
+            "completion_tokens": 75,
+            "total_tokens": 88
+          }
+        },
+        "Gemini": {
+          "model": "Gemini",
+          "content": "The capital of France is **Paris**.",
+          "usage": {
+            "prompt_tokens": 8,
+            "completion_tokens": 8,
+            "total_tokens": 284
+          }
+        }
+      },
+      "isAssessment": false
+    }
+  ],
+  "metadata": {
+    "start_time": "2025-09-18T13:56:49.420393",
+    "total_rounds": 1,
+    "last_updated": "2025-09-18T13:56:54.197007"
+  }
+}

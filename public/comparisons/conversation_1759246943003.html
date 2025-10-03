@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: rgba(30, 30, 50, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: rgba(30, 30, 50, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            color: #e0e0e0;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #e0e0e0;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #2a2a3e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #444;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+
+        .model-content pre {
+            background: #444;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            color: #e0e0e0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-30T15:41:46.159Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-30T15:42:23.002Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-30T15:42:23.002Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>is coffee or tea better for your stomach?   how do they compare acidity wise?</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p><strong>Tea is generally easier on the stomach than coffee</strong>, primarily due to lower acidity and different compounds.</p><h2>Acidity Comparison</h2><ul><li><strong>Coffee</strong>: pH around 4.85-5.10 (more acidic)</li><li><strong>Tea</strong>: pH around 6.0-7.0 (less acidic, closer to neutral)</li></ul></p><p><h2>Stomach Impact</h2><p><strong>Tea advantages:</strong><ul><li>Lower acidity reduces stomach irritation</li><li>Contains L-theanine, which can have calming effects</li><li>Tannins may help with digestion (though can cause nausea on empty stomach)</li><li>Green tea has anti-inflammatory properties</li></ul></p><p><strong>Coffee disadvantages:</strong><ul><li>Higher acidity can trigger heartburn and acid reflux</li><li>Stimulates more stomach acid production</li><li>Can irritate the stomach lining, especially on an empty stomach</li><li>Higher caffeine content can increase digestive issues</li></ul></p><p><h2>Individual Factors</h2>Your personal tolerance matters most:<ul><li>Some people handle coffee fine</li><li>Others find even tea irritating</li><li>Adding milk or food can help buffer acidity in both drinks</li><li>Cold brewing coffee reduces acidity significantly</li></ul></p><p><strong>Bottom line:</strong>If you have a sensitive stomach, acid reflux, or digestive issues, tea is typically the gentler choice. But if you tolerate coffee well, moderate consumption is usually fine for most people.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 25 in / 292 out / 317 total<br>
+                        <strong>Response time:</strong> 7.56s
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>Short answer: For most people with a sensitive stomach, tea (especially green, white, or many herbal teas) is gentler than coffee. That’s less about the drink’s pH and more about coffee’s tendency to stimulate stomach acid and reflux.</p><p>How they affect your stomach<ul><li>Coffee: Strongly stimulates gastric acid and can relax the lower esophageal sphincter, so it more often worsens heartburn/GERD, dyspepsia, and IBS symptoms. This can happen even with decaf (though usually less).</li><li>Tea: Usually milder. Still contains caffeine and tannins, which can upset some stomachs (especially on an empty stomach), but it generally provokes fewer reflux/acid symptoms than coffee. Peppermint tea can worsen reflux in some people by relaxing the sphincter.</li></ul></p><p>Acidity (pH) comparison<ul><li>Coffee: Typically mildly acidic in the cup, around pH ~4.5–5.2.</li><li>Black tea: Also mildly acidic, roughly pH ~4.9–5.5.</li><li>Green/white tea: Closer to neutral on average (often higher pH than coffee/black tea), but can vary with brew strength and water.</li><li>Herbal teas: Vary widely. Hibiscus, rosehip, and citrus-based blends are notably acidic; chamomile, rooibos, and ginger are closer to neutral.</li></ul></p><p>Important nuance: The drink’s pH isn’t the main driver of stomach symptoms. Coffee contains compounds (not just caffeine) that stimulate your stomach to produce more acid; that’s why it can feel harsher than tea even when their pH is similar.</p><p>If you have a sensitive stomach or reflux<ul><li>Prefer: Green or white tea; non-citrus herbals like chamomile, ginger, rooibos. Decaf versions can help.</li><li>If choosing coffee: Try dark roast, cold brew, or “low-acid” beans; have it with food; consider adding a splash of milk to buffer; keep portions small. Decaf may be better but can still trigger symptoms.</li><li>Avoid/limit: Very hot drinks, very strong brews, citrus or hibiscus teas, and peppermint if you get reflux.</li></ul></p><p>If you’re dealing with frequent heartburn, ulcers, or ongoing stomach pain, consider discussing with a clinician; beverage tweaks help, but persistent symptoms may need treatment.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 0 in / 0 out / 0 total<br>
+                        <strong>Response time:</strong> 36.84s
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>Excellent question! This is a common concern for many people.</p><p>The short answer is that for most people with sensitive stomachs,<strong>tea is generally better and gentler than coffee.</strong>However, the &quot;why&quot; is more nuanced and depends on the individual and the specific type of tea or coffee.</p><p>Let&#39;s break it down by comparing their acidity and other key factors.</p><p>---</p><h3>How They Compare: Acidity (pH Level)</h3><p>Acidity is measured on the pH scale, where 7 is neutral. Anything below 7 is acidic, and the lower the number, the more acidic it is. Your stomach acid is extremely acidic (pH 1.5-3.5), so the goal is to avoid drinks that either trigger excess acid production or are highly acidic themselves.</p><p><em><strong>Coffee:</strong>Typically has a pH between<strong>4.85 and 5.10</strong>. This places it firmly in the acidic range. The roasting process affects acidity; surprisingly,<strong>darker roasts are often</em>less* acidic</strong>than lighter roasts. Cold brew coffee is also significantly less acidic than hot-brewed coffee.<ul><li><strong>Tea:</strong>The acidity of tea varies widely by type.</li></ul>*<strong>Black Tea:</strong>pH of<strong>4.9 to 5.5</strong>. It&#39;s the most acidic type of tea, putting it in a similar range as coffee.     *<strong>Green Tea:</strong>Much less acidic, with a pH of<strong>7 to 10</strong>. It&#39;s often neutral or even slightly alkaline.     *<strong>Herbal Teas:</strong>This varies dramatically. Chamomile and mint are less acidic, while fruit-based teas (like hibiscus or lemon) can be quite acidic.</p><p><strong>Winner on Acidity:</strong><strong>Tea</strong>, especially green and most herbal varieties.</p><p>---</p><h3>Beyond Acidity: Other Factors Affecting Your Stomach</h3><p>Acidity isn&#39;t the only thing that can irritate your stomach. Here are other crucial factors to consider.</p><p>#### 1. Caffeine Content Caffeine is a major culprit for stomach issues. It can:<ul><li><strong>Increase Stomach Acid Production:</strong>This can worsen conditions like gastritis or ulcers.</li><li><strong>Relax the Lower Esophageal Sphincter (LES):</strong>The LES is the valve that keeps stomach acid from flowing back up into your esophagus. When it relaxes, it can cause or worsen acid reflux and heartburn (GERD).</li></ul></p><ul><li><strong>Coffee:</strong>A typical 8 oz cup has<strong>95 mg</strong>of caffeine on average.</li><li><strong>Tea:</strong>An 8 oz cup of black tea has ~<strong>47 mg</strong>, and green tea has ~<strong>28 mg</strong>.</li></ul><p><strong>Winner:</strong><strong>Tea</strong>has significantly less caffeine, making it less likely to trigger these issues.</p><p>#### 2. Other Compounds</p><ul><li><strong>Coffee:</strong>Contains compounds like chlorogenic acids and oils (diterpenes) that can stimulate the stomach to produce more acid, independent of its own pH level.</li><li><strong>Tea:</strong>Contains<strong>tannins</strong>. In high concentrations (from brewing tea for too long), tannins can sometimes cause nausea, especially on an empty stomach. However, tea also contains<strong>L-theanine</strong>, an amino acid that has a calming effect and can counteract some of the jittery effects of caffeine.</li></ul><p><strong>Winner:</strong><strong>Tea</strong>is generally gentler, as its compounds are less likely to cause a major increase in stomach acid.</p><p>---</p><h3>Which is Better for Specific Stomach Conditions?</h3><ul><li><strong>For Acid Reflux/GERD:</strong><strong>Tea is usually the safer choice.</strong>Both can be problematic due to caffeine relaxing the LES, but the lower caffeine content in tea makes it a better option. Avoid very strong mint teas, as mint can also relax the LES in some people.</li><li><strong>For Gastritis or Ulcers:</strong><strong>Herbal tea is the best option.</strong>Both coffee and caffeinated tea can irritate an already inflamed stomach lining. Gentle herbal teas like chamomile or licorice root are often recommended. Coffee should be avoided until the stomach has healed.</li><li><strong>For IBS:</strong><strong>Low-caffeine or herbal tea is much better.</strong>Caffeine is a gut stimulant and can trigger IBS symptoms like cramping and diarrhea. Coffee is a common trigger for many people with IBS.</li></ul><h3>How to Make Your Drink More Stomach-Friendly</h3><p>If you love your daily brew but it&#39;s causing trouble, here are some tips:</p><p><strong>If You&#39;re a Coffee Drinker:</strong><ul><li><strong>Go for a Dark Roast:</strong>They are generally less acidic.</li><li><strong>Try Low-Acid Coffee Beans:</strong>Many brands now specialize in this.</li><li><strong>Switch to Cold Brew:</strong>The cold brewing process extracts significantly less acid from the beans.</li><li><strong>Never Drink on an Empty Stomach:</strong>Having food in your stomach can help buffer the acid.</li><li><strong>Add Milk or a Non-Dairy Alternative:</strong>This can help neutralize some of the acid.</li></ul></p><p><strong>If You&#39;re a Tea Drinker:</strong><ul><li><strong>Don&#39;t Over-Steep:</strong>Brewing for too long releases more tannins and caffeine.</li><li><strong>Choose Green or Herbal Teas:</strong>These are naturally less acidic and have less (or no) caffeine.</li><li><strong>Avoid Very Citrusy Teas:</strong>Lemon or hibiscus teas can be high in acid and may trigger reflux.</li></ul></p><h3>Final Verdict</h3><p>For the average person concerned about stomach health,<strong>tea is the clear winner.</strong>It is generally less acidic, has less caffeine, and is less likely to cause issues like acid reflux or gastritis. Green tea and non-citrus herbal teas are the gentlest choices of all.</p><p>Ultimately, the most important thing is to<strong>listen to your own body</strong>, as individual sensitivity plays a huge role.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 0 in / 0 out / 0 total<br>
+                        <strong>Response time:</strong> 27.55s
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

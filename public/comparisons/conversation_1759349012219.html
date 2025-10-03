@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: rgba(30, 30, 50, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: rgba(30, 30, 50, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            color: #e0e0e0;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #e0e0e0;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #2a2a3e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #444;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+
+        .model-content pre {
+            background: #444;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            color: #e0e0e0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-10-01T20:02:46.240Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-10-01T20:03:32.215Z<br>
+            <strong>Build:</strong> 1.0.0+1759252728382
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-10-01T20:03:32.215Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>Floating point explained for CS student</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><h1>Floating Point Numbers: A Computer Science Guide</h1><h2>What Are Floating Point Numbers?</h2><p>Floating point numbers are a way computers represent real numbers (decimals) in binary. Think of them as &quot;scientific notation for computers&quot; - they can represent a huge range of values but with limited precision.</p><h2>Why Do We Need Them?</h2><p>Computers naturally work with integers, but we need to represent:<ul><li>Decimals (3.14159, 0.5)</li><li>Very large numbers (6.022 × 10²³)</li><li>Very small numbers (1.602 × 10⁻¹⁹)</li></ul></p><h2>IEEE 754 Standard</h2><p>The most common format is IEEE 754, which defines how floating point numbers are stored in memory.</p><h3>Single Precision (32-bit float)</h3><pre><code class="language-">[Sign][Exponent][Mantissa/Fraction]   1       8          23        bits</code></pre></p><p><h3>Double Precision (64-bit double)</h3><pre><code class="language-">[Sign][Exponent][Mantissa/Fraction]   1      11          52        bits</code></pre></p><p><h2>How It Works</h2><p>Let&#39;s break down a 32-bit float storing the number<strong>-6.75</strong>:</p><ol><li><strong>Convert to binary</strong>: 6.75 = 110.11₂</li><li><strong>Normalize</strong>: 110.11₂ = 1.1011₂ × 2²</li><li><strong>Store components</strong>:</li></ol>-<strong>Sign bit</strong>: 1 (negative)    -<strong>Exponent</strong>: 2 + 127 (bias) = 129 = 10000001₂    -<strong>Mantissa</strong>: 1011000...000 (23 bits, implicit leading 1)</p><pre><code class="language-">Result: 1 10000001 10110000000000000000000</code></pre><h2>Key Concepts</h2><h3>1. Limited Precision</h3><pre><code class="language-python"># Python example print(0.1 + 0.2)  # Output: 0.30000000000000004</code></pre>Not all decimal numbers can be exactly represented in binary!</p><p><h3>2. Special Values</h3><ul><li><strong>+∞ and -∞</strong>: When numbers are too large</li><li><strong>NaN (Not a Number)</strong>: Invalid operations like 0/0</li><li><strong>Zero</strong>: Has positive and negative variants</li></ul></p><p><h3>3. Rounding Errors</h3><pre><code class="language-c">float sum = 0.0f; for(int i = 0; i< 10; i++) {     sum += 0.1f; } // sum might not equal exactly 1.0! </code></pre></p><p><h2>Common Pitfalls for Programmers</h2><h3>1. Equality Comparisons</h3><pre><code class="language-c">// DON'T do this: if (float<em>a == float</em>b) { ... }</p><p>// DO this instead: if (fabs(float<em>a - float</em>b)< EPSILON) { ... } </code></pre></p><p><h3>2. Accumulation Errors</h3>Small errors compound over many operations.</p><p><h3>3. Mixing Types</h3><pre><code class="language-c">double d = 1.0/3.0; float f = d;  // Precision loss!</code></pre></p><p><h2>Performance Considerations</h2><ul><li><strong>Float vs Double</strong>: Floats use less memory but doubles provide more precision</li><li><strong>SIMD Instructions</strong>: Modern CPUs can process multiple floats simultaneously</li><li><strong>GPU Computing</strong>: Graphics cards are optimized for floating point operations</li></ul><h2>Alternatives</h2><p>When precision is critical:<ul><li><strong>Fixed-point arithmetic</strong>: For embedded systems</li><li><strong>Decimal libraries</strong>: For financial calculations</li><li><strong>Rational numbers</strong>: Store as numerator/denominator pairs</li></ul></p><h2>Quick Reference</h2><p>| Type | Size | Precision | Range (approx) | |------|------|-----------|----------------| | float | 32-bit | ~7 decimal digits | ±10³⁸ | | double | 64-bit | ~15 decimal digits | ±10³⁰⁸ |</p><h2>Best Practices</h2><p><ol><li><strong>Never compare floats for equality directly</strong></li><li><strong>Use appropriate epsilon values for comparisons</strong></li><li><strong>Be aware of precision limitations</strong></li><li><strong>Consider the order of operations</strong>(associativity matters!)</li><li><strong>Use doubles when precision is important</strong></li></ol><p>Understanding floating point is crucial for writing robust numerical code and avoiding subtle bugs that can plague applications dealing with real numbers!</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 14 in / 999 out / 1013 total<br>
+                        <strong>Response time:</strong> 19.37s
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>Here’s a concise, practical guide to floating point for a CS student.</p><p>What floating point is<ul><li>A way to represent real numbers as base-2 scientific notation with fixed precision.</li><li>Value = (-1)^sign × significand × 2^exponent.</li><li>In IEEE 754 “normal” numbers, significand is 1.fraction (implicit leading 1); in subnormals, it’s 0.fraction.</li></ul></p><p>Core IEEE 754 formats<ul><li>float32 (“single”): 1 sign bit, 8 exponent bits (bias 127), 23 fraction bits.</li></ul>- ~7 decimal digits of precision.   - Range ≈ 1.18e-38 to 3.4e38 (normal). Smallest positive subnormal ≈ 1e-45.   - Epsilon (gap at 1.0): 2^-23 ≈ 1.1920929e-7.   - Exact integers up to 2^24 (16,777,216).<ul><li>float64 (“double”): 1 sign, 11 exponent (bias 1023), 52 fraction.</li></ul>- ~16 decimal digits of precision.   - Range ≈ 2.23e-308 to 1.80e308. Smallest positive subnormal ≈ 5e-324.   - Epsilon at 1.0: 2^-52 ≈ 2.220446049250313e-16.   - Exact integers up to 2^53 (9,007,199,254,740,992).</p><p>Why 0.1 + 0.2 != 0.3 (usually)<ul><li>Only fractions whose denominator is a power of two have exact binary representations.</li><li>0.1 (1/10) and 0.2 (1/5) are repeating in binary, so they’re rounded.</li><li>The rounded results don’t add to the rounded representation of 0.3.</li><li>Example (Python):</li></ul>- 0.1 + 0.2 == 0.3  -&gt; False   - Use math.isclose(0.1+0.2, 0.3)</p><p>Rounding and error<ul><li>Default rounding mode: round to nearest, ties to even.</li><li>Each operation rounds to nearest representable value; typical relative error ≤ 0.5 ULP.</li><li>ULP(x): spacing between representable numbers near x. Spacing grows with |x|.</li><li>Machine epsilon ε: spacing at 1.0 (above) – useful upper bound on relative rounding error per op.</li></ul></p><p>Special values<ul><li>+∞, -∞: results of overflow or division by ±0; follow algebraic rules.</li><li>NaN (Not a Number): result of undefined ops (0/0, ∞-∞, sqrt(-1) in reals).</li></ul>- NaN != NaN; any comparison with NaN is false except isnan(x).<ul><li>+0 and -0: compare equal, but 1/+0 = +∞ and 1/-0 = -∞; sign can affect branch cuts.</li><li>Subnormals: fill the underflow gap with gradual underflow; preserve sign; may be slower on some hardware (often flushed to zero on GPUs or with “fast math”).</li></ul></p><p>Common pitfalls and how to avoid them<ul><li>Direct equality:</li></ul>- Don’t: if (a + b == c)   - Do: use tolerances (abs and relative). Example (Python): math.isclose(x, y, rel<em>tol=1e-12, abs</em>tol=1e-15)<ul><li>Summation error:</li></ul>- Adding many numbers accumulates rounding error, especially with mixed magnitudes.   - Prefer pairwise (tree) reduction or Kahan/Neumaier compensated summation.<ul><li>Catastrophic cancellation:</li></ul>- Subtracting nearly equal numbers loses significant digits.   - Rewrite formulas to avoid it (e.g., use hypot(a,b) instead of sqrt(a<em>a + b</em>b), use log-sum-exp for logs).<ul><li>Overflow/underflow:</li></ul>- Rescale inputs; use log-domain computations; use fused multiply-add (FMA) when available: a*b + c with one rounding.<ul><li>Reordering:</li></ul>- Floating-point addition and multiplication are not associative or distributive in practice due to rounding.   - Parallel reductions or compiler optimizations can change results. If you need reproducibility, control order and compiler flags.<ul><li>Decimal quantities (money):</li></ul>- Prefer integer cents or a decimal library (e.g., Decimal, BigDecimal) to avoid binary rounding issues.<ul><li>Iteration with fractional steps:</li></ul>- Avoid i += 0.1 loops; use integer counters and compute value as start + step*count.</p><p>Performance and determinism tips<ul><li>“Fast math” compiler flags (-ffast-math) can change results (reassociate, ignore NaNs, flush subnormals); use only if acceptable.</li><li>GPUs often use flush-to-zero and different contraction rules; results may differ from CPU.</li><li>x87 vs SSE/AVX: legacy x87 had extended precision; modern compilers usually use SSE/AVX doubles consistently.</li><li>FMA can improve both accuracy and speed.</li></ul></p><p>Printing and parsing<ul><li>Use enough digits to round-trip:</li></ul>- Double needs up to 17 significant digits; float up to 9.   - Many languages’ default repr does this (e.g., Python’s repr).<ul><li>Formatting fewer digits is fine for display but don’t parse it back if you need exact recovery.</li></ul></p><p>Language notes<ul><li>C/C++: IEEE 754 typical; check std::numeric_limits; beware of -ffast-math; use std::fesetround to change rounding; std::fpclassify, std::isnan, std::isinf.</li><li>Python: float is double; use math.isclose; decimal module for decimal arithmetic; fractions for rationals.</li><li>Java/C#: float (32), double (64); BigDecimal for decimal.</li><li>JavaScript: Number is double; use BigInt for large integers; beware JSON and 53-bit integer limit.</li><li>SQL: DECIMAL/NUMERIC is decimal; FLOAT/REAL is binary floating point (vendor-specific).</li></ul></p><p>Quick mental model<ul><li>Numbers are on exponentially spaced “bins” (by exponent). Within each bin, they’re uniformly spaced.</li><li>Relative precision is roughly constant across magnitudes; absolute spacing grows with |x|.</li><li>Expect tiny relative rounding in each op, but algorithm structure can amplify or mitigate it.</li></ul></p><p>Handy constants (approx)<ul><li>float: ε ≈ 1.19e-7, max ≈ 3.40e38, min normal ≈ 1.18e-38.</li><li>double: ε ≈ 2.22e-16, max ≈ 1.80e308, min normal ≈ 2.23e-308.</li><li>Exact integers: float up to 2^24, double up to 2^53.</li></ul></p><p>Compensated summation (Kahan) example (C-like) double kahan<em>sum(const double* a, size</em>t n) {   double sum = 0.0;   double c = 0.0; // compensation   for (size_t i = 0; i &lt; n; ++i) {     double y = a[i] - c;     double t = sum + y;     c = (t - sum) - y;     sum = t;   }   return sum; }</p><p>Stable “close” check (Python) import math def close(x, y, rel=1e-12, abs_=1e-15):     return math.isclose(x, y, rel<em>tol=rel, abs</em>tol=abs_)</p><p>Further study<ul><li>David Goldberg, “What Every Computer Scientist Should Know About Floating-Point Arithmetic.”</li><li>IEEE 754-2008/2019 standard (overview articles).</li><li>“Correctly Rounded Binary-Decimal and Decimal-Binary Conversions” (Burger &amp; Dybvig).</li><li>“The Art of Floating-Point Numbers” and “Floating Point Visually” (tutorials).</li></ul></p><p>If you tell me your language/toolchain and use case (numerical methods, graphics, ML, finance), I can tailor best practices and examples.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 12 in / 3060 out / 3072 total<br>
+                        <strong>Response time:</strong> 45.97s
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>Of course! This is a fantastic and fundamental topic for any computer science student. Understanding floating-point isn&#39;t just about knowing what a<code>float</code>or<code>double</code>is; it&#39;s about understanding why your programs can behave in unexpected ways with decimal numbers.</p><p>Let&#39;s break it down from the ground up.</p><p>---</p><h3>1. The Problem: Why Integers Aren&#39;t Enough</h3><p>Computers are great with integers (..., -2, -1, 0, 1, 2, ...). They can be represented perfectly in binary.</p><p>But what about numbers like<code>3.14159</code>,<code>0.0001</code>, or the mass of a planet,<code>5.972 × 10^24</code>kg?</p><p>You can&#39;t store these with standard integer types. We need a way to represent:<ol><li><strong>Fractional parts</strong>(the numbers after the decimal point).</li><li><strong>A huge dynamic range</strong>(both very tiny and very large numbers).</li></ol></p><p>This is the problem that floating-point numbers solve.</p><p>---</p><h3>2. The Core Idea: Scientific Notation for Binary</h3><p>In school, you learned scientific notation for decimal numbers:<ul><li><code>1,234,500</code>becomes<code>1.2345 × 10^6</code></li><li><code>0.00789</code>becomes<code>7.89 × 10^-3</code></li></ul></p><p>Every number is represented by three parts:<ol><li><strong>The Sign</strong>(+ or -)</li><li><strong>The Significand</strong>(or<strong>Mantissa</strong>):<code>1.2345</code>or<code>7.89</code></li><li><strong>The Exponent</strong>:<code>6</code>or<code>-3</code>(with a base of 10)</li></ol></p><p><strong>Floating-point is exactly this, but in binary (base-2).</strong></p><p>A binary floating-point number looks like this:</p><p>&gt;<strong>Sign × Significand × 2&lt;sup&gt;Exponent&lt;/sup&gt;</strong></p><p>For example, the number<code>9.5</code>in decimal is<code>1001.1</code>in binary. In binary scientific notation, we &quot;float&quot; the binary point to be after the first<code>1</code>:</p><p><code>1001.1</code>becomes<code>1.0011 × 2^3</code></p><p>From this, we can extract our three key pieces:<ul><li><strong>Sign</strong>: Positive</li><li><strong>Significand</strong>:<code>1.0011</code></li><li><strong>Exponent</strong>:<code>3</code></li></ul></p><p>This is the<em>conceptual</em>model. Now, let&#39;s see how a computer actually stores these three pieces in a fixed number of bits (e.g., 32 or 64).</p><p>---</p><h3>3. The Standard: IEEE 754</h3><p>To make sure a floating-point number on an Intel CPU is the same as on an ARM chip in your phone, the industry uses a standard called<strong>IEEE 754</strong>. It defines exactly how to pack the sign, exponent, and significand into bits.</p><p>Let&#39;s look at the most common format: a 32-bit single-precision float (<code>float</code>in C++, Java, etc.).</p><p>It&#39;s a 32-bit word, divided into three fields:</p><pre><code class="language-">1 bit    8 bits      23 bits +-------+----------+-----------------------+ | Sign  | Exponent |   Fraction (Mantissa) | +-------+----------+-----------------------+</code></pre><p><ul><li><strong>Sign (1 bit)</strong>: The simplest part.<code>0</code>for positive,<code>1</code>for negative.</li><li><strong>Exponent (8 bits)</strong>: Stores the exponent. But there&#39;s a trick! To represent both positive and negative exponents (like<code>2^10</code>and<code>2^-5</code>), it uses a<strong>biased representation</strong>.</li></ul>*   With 8 bits, you can represent 256 values (0 to 255).     *   The standard defines a<strong>bias</strong>of<strong>127</strong>.     *   The actual exponent is calculated as:<code>Actual Exponent = Stored Exponent - 127</code>.     *   So, to store an exponent of<code>3</code>, the computer calculates<code>3 + 127 = 130</code>and stores<code>130</code>.     *   To store an exponent of<code>-5</code>, it calculates<code>-5 + 127 = 122</code>and stores<code>122</code>.<em><strong>Fraction / Mantissa (23 bits)</strong>: This stores the significand. But there&#39;s</em>another* clever trick.<em>In binary scientific notation (<code>1.xxxx × 2^exp</code>), the leading digit is</em>always* 1 (except for the number zero).     *   Since it&#39;s always 1, why waste a bit storing it?     *   The standard assumes this leading<code>1.</code>and doesn&#39;t store it. This is called the<strong>&quot;hidden bit&quot;</strong>or<strong>&quot;implicit bit&quot;</strong>.<em>So, the 23 bits only store the fractional part</em>after* the<code>1.</code>. This gives us 24 bits of precision for the price of 23!</p><p>---</p><h3>4. Worked Example: Storing 9.5 as a 32-bit Float</h3><p>Let&#39;s put it all together.</p><ol><li><strong>Number</strong>: 9.5 (decimal)</li><li><strong>Sign</strong>: Positive. So, the<strong>Sign bit is<code>0</code></strong>.</li><li><strong>Convert to Binary</strong>:<code>9</code>is<code>1001</code>.<code>0.5</code>is<code>0.1</code>(since 1/2 = 2⁻¹). So, 9.5 is<code>1001.1</code>in binary.</li><li><strong>Normalize (Binary Scientific Notation)</strong>: Move the point so there&#39;s one digit before it.</li></ol><code>1001.1</code>becomes<code>1.0011 × 2^3</code>.<ol><li><strong>Calculate the three parts</strong>:</li></ol>*<strong>Sign</strong>:<code>0</code>*<strong>Exponent</strong>: The actual exponent is<code>3</code>. We store<code>3 + bias(127) = 130</code>. In 8-bit binary, 130 is<code>10000010</code>.     *<strong>Fraction</strong>: The significand is<code>1.0011</code>. We drop the leading<code>1.</code>and store the rest:<code>0011</code>. We need to fill 23 bits, so we pad with zeros on the right:<code>00110000000000000000000</code>.</p><p><ol><li><strong>Assemble the 32-bit number</strong>:</li></ol><pre><code class="language-">Sign |   Exponent   |            Fraction  0   |   10000010   | 00110000000000000000000</code></pre>This pattern of 32 bits is how<code>9.5</code>is physically stored in memory or a CPU register.</p><p>---</p><h3>5. Special Values: The Weird Stuff</h3><p>The IEEE 754 standard reserves certain exponent values for special cases:</p><p><ul><li><strong>When the Exponent field is all<code>0</code>s</strong>:</li></ul>*   If the Fraction is also all<code>0</code>s, the number is<strong>Zero</strong>(<code>+0</code>or<code>-0</code>, depending on the sign bit).     *   If the Fraction is non-zero, it represents a<strong>denormalized (or subnormal) number</strong>. These are very tiny numbers close to zero that don&#39;t have the implicit leading<code>1</code>. They allow for &quot;gradual underflow&quot; instead of suddenly dropping to zero.</p><p><ul><li><strong>When the Exponent field is all<code>1</code>s</strong>:</li></ul>*   If the Fraction is all<code>0</code>s, the number is<strong>Infinity</strong>(<code>+inf</code>or<code>-inf</code>). This is what you get when you divide by zero (<code>1.0 / 0.0</code>) or a number overflows.     *   If the Fraction is non-zero, the value is<strong>NaN (Not a Number)</strong>. This is the result of invalid operations like<code>0.0 / 0.0</code>or<code>sqrt(-1)</code>.</p><p>---</p><h3>6. The Consequences: Why This Matters to You (The &quot;Gotchas&quot;)</h3><p>This system is brilliant, but it has consequences that every programmer<em>must</em>know.</p><p>#### Gotcha #1: Not all numbers can be represented perfectly.</p><p>Your computer stores numbers in base-2. Just like<code>1/3</code>is an infinitely repeating decimal in base-10 (<code>0.333...</code>), many simple base-10 fractions are infinitely repeating in base-2.</p><p><strong>The classic example is<code>0.1</code></strong>. In binary,<code>0.1</code>(decimal) is<code>0.00011001100110011...</code>(the<code>0011</code>part repeats forever).</p><p>Since the fraction part only has 23 bits (for a<code>float</code>), the computer has to round it. This means the stored value for<code>0.1</code>is not<em>exactly</em>0.1. It&#39;s incredibly close, but not perfect.</p><p>This leads to the most famous floating-point bug:</p><p><pre><code class="language-python">>>> 0.1 + 0.2 0.30000000000000004</code></pre>This happens because neither 0.1 nor 0.2 can be stored perfectly, and the tiny errors add up.</p><p>#### Gotcha #2: Never compare floats with<code>==</code>.</p><p>Because of the precision errors, this code is a time bomb waiting to explode:</p><p><pre><code class="language-c++">float a = 0.1 + 0.2; float b = 0.3;</p><p>if (a == b) { // This will almost certainly be FALSE!     // ... this code might never run }</code></pre><strong>Solution:</strong>Check if the numbers are &quot;close enough&quot;. Compare the absolute difference to a small tolerance value (an &quot;epsilon&quot;).</p><p><pre><code class="language-c++">#include<cmath></p><p>const float EPSILON = 0.00001f;</p><p>if (std::abs(a - b)< EPSILON) {     // This is how you correctly compare floats } </code></pre><p>#### Gotcha #3: Mathematical laws can be broken.</p><p>The associative law<code>(a + b) + c == a + (b + c)</code>may not hold true in floating-point math, because the rounding errors can accumulate in different ways depending on the order of operations. This is critical in scientific computing and graphics, where small errors can lead to big visual artifacts or simulation failures.</p><p>---</p><h3>Summary: Key Takeaways for a CS Student</h3><ol><li><strong>What it is</strong>: A system for representing fractional numbers using a binary version of scientific notation (Sign, Exponent, Mantissa).</li><li><strong>The Standard</strong>: IEEE 754 is the universal standard that defines the bit layouts for<code>float</code>(32-bit) and<code>double</code>(64-bit).</li><li><strong>Clever Tricks</strong>: It uses a<strong>biased exponent</strong>to store positive/negative exponents and a<strong>hidden leading bit</strong>to get more precision.</li><li><strong>The Big &quot;Gotcha&quot;</strong>:<strong>Finite precision</strong>. Not all decimal fractions can be represented exactly in binary. Simple numbers like<code>0.1</code>are stored as approximations.</li><li><strong>The #1 Rule</strong>:<strong>NEVER use<code>==</code>to compare floating-point numbers.</strong>Always check if they are within a small tolerance (<code>epsilon</code>) of each other.</li></ol><p>Once you internalize these concepts, you&#39;ll be way ahead of the curve in writing robust and correct code.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> N/A in / N/A out / N/A total<br>
+                        <strong>Response time:</strong> 36.28s
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

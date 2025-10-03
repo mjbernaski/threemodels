@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Model Comparison - 2025-09-18 14:10:38</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .metadata {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .round {
+            margin-bottom: 40px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .user-prompt {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-weight: 500;
+        }
+        .assessment-prompt {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .responses {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: #ddd;
+        }
+        .response {
+            background: white;
+            padding: 20px;
+            position: relative;
+        }
+        .model-name {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        .response-content {
+            color: #333;
+            line-height: 1.6;
+        }
+        .response-content p { margin-bottom: 10px; }
+        .response-content ul, .response-content ol { margin-left: 20px; margin-bottom: 10px; }
+        .response-content li { margin-bottom: 5px; }
+        .response-content pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .response-content code {
+            background: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .response-content pre code {
+            background: transparent;
+            padding: 0;
+        }
+        .error {
+            color: #d32f2f;
+            font-style: italic;
+        }
+        .usage-info {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            font-size: 0.85em;
+            color: #666;
+        }
+        .timestamp {
+            font-size: 0.85em;
+            color: #999;
+            margin-top: 10px;
+        }
+        @media (max-width: 1200px) {
+            .responses { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI Model Comparison</h1>
+            <div class="metadata">
+                <p>Session started: 2025-09-18T14:10:13.518313</p>
+                <p>Total rounds: 1</p>
+                <p>Generated: 2025-09-18 14:10:38</p>
+            </div>
+        </div>
+        
+        <div class="round">
+            <div class="user-prompt">
+                <div>Round 1</div>
+                <div>Write a short haiku about technology.</div>
+                <div class="timestamp">Time: 2025-09-18T14:10:38.246828</div>
+            </div>
+            <div class="responses">
+                <div class="response">
+                    <div class="model-name">Anthropic</div>
+                    <div class="error">Error: Error code: 529 - {&#x27;type&#x27;: &#x27;error&#x27;, &#x27;error&#x27;: {&#x27;type&#x27;: &#x27;overloaded_error&#x27;, &#x27;message&#x27;: &#x27;Overloaded&#x27;}, &#x27;request_id&#x27;: None}</div><div class="usage-info">⏱️ Failed after: 23.86s<br>🔄 Failed after 3 attempts<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">OpenAI</div>
+                    <div class="response-content"><p>Glass screens glow at dusk,
+Silent code hums through the wires,
+Stars sync with our pulse.</p></div><div class="usage-info">Tokens - Input: 14 |
+                                    Output: 541 |
+                                    Total: 555<br>⏱️ Response time: 12.95s<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">Gemini</div>
+                    <div class="response-content"><p>A bright, glowing pane,
+A portal held in the hand,
+The whole world is there.</p></div><div class="usage-info">Tokens - Input: 9 |
+                                    Output: 21 |
+                                    Total: 1937<br>⏱️ Response time: 24.59s<br></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

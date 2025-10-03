@@ -1,0 +1,45 @@
+{
+  "rounds": [
+    {
+      "id": 1,
+      "timestamp": "2025-09-18T14:10:38.246828",
+      "userPrompt": "Write a short haiku about technology.",
+      "responses": {
+        "Anthropic": {
+          "model": "Anthropic",
+          "error": "Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}, 'request_id': None}",
+          "response_time": 23.85857367515564,
+          "attempts": 3
+        },
+        "OpenAI": {
+          "model": "OpenAI",
+          "content": "Glass screens glow at dusk,\nSilent code hums through the wires,\nStars sync with our pulse.",
+          "usage": {
+            "prompt_tokens": 14,
+            "completion_tokens": 541,
+            "total_tokens": 555
+          },
+          "response_time": 12.951138019561768,
+          "attempts": 1
+        },
+        "Gemini": {
+          "model": "Gemini",
+          "content": "A bright, glowing pane,\nA portal held in the hand,\nThe whole world is there.",
+          "usage": {
+            "prompt_tokens": 9,
+            "completion_tokens": 21,
+            "total_tokens": 1937
+          },
+          "response_time": 24.590332984924316,
+          "attempts": 1
+        }
+      },
+      "isAssessment": false
+    }
+  ],
+  "metadata": {
+    "start_time": "2025-09-18T14:10:13.518313",
+    "total_rounds": 1,
+    "last_updated": "2025-09-18T14:10:38.246866"
+  }
+}

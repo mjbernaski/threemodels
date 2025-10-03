@@ -1,0 +1,45 @@
+{
+  "rounds": [
+    {
+      "id": 1,
+      "timestamp": "2025-09-18T14:11:32.882645",
+      "userPrompt": "Say hello",
+      "responses": {
+        "Anthropic": {
+          "model": "Anthropic",
+          "error": "Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}, 'request_id': None}",
+          "response_time": 11.975591897964478,
+          "attempts": 2
+        },
+        "OpenAI": {
+          "model": "OpenAI",
+          "content": "Hello! How can I help you today?",
+          "usage": {
+            "prompt_tokens": 8,
+            "completion_tokens": 82,
+            "total_tokens": 90
+          },
+          "response_time": 2.9352099895477295,
+          "attempts": 1
+        },
+        "Gemini": {
+          "model": "Gemini",
+          "content": "Hello there! How can I help you today?",
+          "usage": {
+            "prompt_tokens": 3,
+            "completion_tokens": 10,
+            "total_tokens": 588
+          },
+          "response_time": 7.080986976623535,
+          "attempts": 1
+        }
+      },
+      "isAssessment": false
+    }
+  ],
+  "metadata": {
+    "start_time": "2025-09-18T14:10:58.016673",
+    "total_rounds": 1,
+    "last_updated": "2025-09-18T14:11:32.882673"
+  }
+}

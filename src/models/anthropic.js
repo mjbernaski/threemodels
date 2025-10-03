@@ -12,6 +12,7 @@ export class AnthropicModel extends BaseModel {
 
   async sendMessage(messages, onChunk) {
     try {
+      const startTimeMs = Date.now();
       const stream = await this.client.messages.create({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 4096,
@@ -32,11 +33,29 @@ export class AnthropicModel extends BaseModel {
           usage = chunk.usage;
         }
       }
-      
+      const responseTimeSeconds = (Date.now() - startTimeMs) / 1000;
+
+      // Normalize usage keys and compute totals if available
+      let normalizedUsage = null;
+      if (usage) {
+        const input = usage.input_tokens ?? usage.prompt_tokens ?? 0;
+        const output = usage.output_tokens ?? usage.completion_tokens ?? 0;
+        const total = (usage.total_tokens != null) ? usage.total_tokens : (input + output || undefined);
+        normalizedUsage = {
+          input_tokens: usage.input_tokens ?? undefined,
+          output_tokens: usage.output_tokens ?? undefined,
+          total_tokens: total,
+          // also provide prompt/completion for generic handling
+          prompt_tokens: usage.prompt_tokens ?? usage.input_tokens ?? undefined,
+          completion_tokens: usage.completion_tokens ?? usage.output_tokens ?? undefined
+        };
+      }
+
       return {
         model: this.name,
         content: fullContent,
-        usage
+        usage: normalizedUsage || usage,
+        response_time: responseTimeSeconds
       };
     } catch (error) {
       // Enhanced error handling with more context

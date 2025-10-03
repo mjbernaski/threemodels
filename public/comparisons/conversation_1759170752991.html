@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        .model-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-29T18:31:35.366Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-29T18:32:32.989Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-29T18:32:32.989Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>explain &quot;flash attention&quot; to me focusing on the specific algorithm</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><h1>Flash Attention: Memory-Efficient Attention Algorithm</h1><p>Flash Attention is an algorithm that computes exact attention with dramatically reduced memory usage by leveraging<strong>tiling</strong>and<strong>recomputation</strong>. Let me break down the core algorithm:</p><h2>The Core Problem</h2><p>Standard attention computation:<pre><code class="language-">Attention(Q,K,V) = softmax(QK^T)V</code></pre></p><p>The naive approach requires storing the full attention matrix<code>QK^T</code>in memory, which scales as O(N²) where N is sequence length.</p><h2>Key Algorithmic Insights</h2><h3>1.<strong>Tiling Strategy</strong></h3>Instead of computing the full N×N attention matrix, Flash Attention divides the computation into smaller blocks:</p><ul><li>Split Q into blocks of size [Br, d]</li><li>Split K,V into blocks of size [Bc, d]</li><li>Process blocks sequentially, keeping only small tiles in fast memory (SRAM)</li></ul><p><h3>2.<strong>Online Softmax with Rescaling</strong></h3>The critical innovation is computing softmax incrementally across blocks:</p><pre><code class="language-python"># Simplified Flash Attention inner loop for each block j of K,V:     # Compute attention scores for current block     S<em>ij = Q</em>i @ K_j.T  # [Br, Bc]          # Update running max (for numerical stability)     m<em>new = max(m</em>old, rowmax(S_ij))          # Rescale previous output and normalizer     O<em>i = O</em>i * exp(m<em>old - m</em>new)     l<em>i = l</em>i * exp(m<em>old - m</em>new)          # Add contribution from current block     O<em>i += exp(S</em>ij - m<em>new) @ V</em>j     l<em>i += rowsum(exp(S</em>ij - m_new))          m<em>old = m</em>new</code></pre><p><h3>3.<strong>The Complete Algorithm</strong></h3><p><strong>Forward Pass:</strong><ol><li>Initialize output O = 0, running sum l = 0, running max m = -∞</li><li>For each block of Q:</li></ol>- Load Q block into SRAM    - For each block of K,V:      - Load K,V blocks into SRAM      - Compute local attention scores      - Update global statistics (m, l) and output (O)      - Store updated statistics<ol><li>Final normalization: O = O / l</li></ol></p><p><strong>Backward Pass:</strong><ul><li>Uses similar tiling strategy</li><li>Recomputes attention scores from stored statistics</li><li>Avoids storing the full attention matrix</li></ul></p><h2>Memory Complexity</h2><ul><li><strong>Standard Attention</strong>: O(N² + Nd) memory</li><li><strong>Flash Attention</strong>: O(N) memory for the attention computation</li><li>Achieves this while maintaining<strong>exact</strong>attention computation (no approximation)</li></ul><h2>Why It Works</h2><ol><li><strong>SRAM vs HBM Trade-off</strong>: Repeatedly loads data from slow memory (HBM) to fast memory (SRAM), but the cost is amortized by avoiding the O(N²) memory bottleneck</li></ol><ol><li><strong>Mathematical Equivalence</strong>: The online softmax algorithm produces identical results to computing the full softmax, just in a different order</li></ol><ol><li><strong>Hardware Awareness</strong>: Designed specifically for GPU memory hierarchy - keeps working set small enough for SRAM</li></ol><p>The algorithm is particularly effective for long sequences where the O(N²) memory requirement of standard attention becomes prohibitive.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 19 in / 798 out / 0 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>FlashAttention is an exact attention algorithm that keeps the math the same as standard dot-product attention, but reorganizes the computation to minimize slow memory traffic. It avoids ever materializing the N×N attention matrix by streaming over K/V in tiles and doing an “online softmax” per query row. The result is O(N^2) compute as usual, but O(N) extra memory and far fewer reads/writes to high-bandwidth memory (HBM), which is why it’s much faster on GPUs.</p><p>Key idea in one sentence:<ul><li>Tile Q/K/V so that a block of Q and one block of K/V fit in on-chip SRAM; for each Q row, keep running softmax statistics (row max and normalization) and a running weighted sum of V, updating them as you stream through K/V tiles; normalize once at the end.</li></ul></p><p>Set-up and notation:<ul><li>Inputs: Q ∈ R^{N×d}, K ∈ R^{N×d}, V ∈ R^{N×d_v}; scale factor s = 1/sqrt(d).</li><li>Goal: O = softmax(QK^T · s) V.</li><li>Hardware: HBM (global memory) is slow; SRAM/shared memory and registers are fast but small.</li></ul></p><p>Core algorithm (single head; batching/heads just add outer loops): 1) Tile shapes    - Choose a query tile size Br (rows) and a key/value tile size Bc (cols) so Q<em>tile ∈ R^{Br×d}, K</em>tile ∈ R^{Bc×d}, V<em>tile ∈ R^{Bc×d</em>v} fit in SRAM.    - Load one Q tile and keep it resident; stream over all K/V tiles.</p><p>2) Per-query running state (held in registers/SMEM, in FP32 for stability)    - m ∈ R^{Br}: running row-wise max of logits (per query row).    - l ∈ R^{Br}: running row-wise sum of exp(logits − m) (the softmax denominator in a stable form).    - o ∈ R^{Br×d<em>v}: running unnormalized output sum, Σ</em>j exp(logit<em>ij − m</em>i) V_j.</p><p>Initialize: m = −∞, l = 0, o = 0.</p><p>3) Sweep over K/V tiles    For each K/V tile:    - Load K<em>tile, V</em>tile into SRAM.    - Compute S = (Q<em>tile · K</em>tile^T) · s using tensor cores (matrix multiply).    - Apply mask if needed (e.g., causal: set S_ij = −∞ where j &gt; i).    - Row-wise for each query r in the tile:      • m<em>blk = max</em>j S[r, j] over the current tile.      • m<em>new = max(m[r], m</em>blk)                  [new global max for the row]      • α = exp(m[r] − m_new)                     [rescale factor for previous partial sums]      • Compute exp terms relative to m_new:          - E[r, j] = exp(S[r, j] − m_new)          - l<em>new = α · l[r] + Σ</em>j E[r, j]          - v<em>sum = Σ</em>j E[r, j] · V_tile[j, :]          - o<em>new = α · o[r, :] + v</em>sum      • Update state: m[r] = m<em>new, l[r] = l</em>new, o[r, :] = o_new</p><p>4) Finalize the tile    - After all K/V tiles are processed: Output_tile[r, :] = o[r, :] / l[r]  (row-wise division).</p><p>Why this is exact (online softmax):<ul><li>Softmax over concatenated blocks can be computed incrementally using the log-sum-exp trick:</li></ul>If you have partial sums computed with max m<em>old and new block with max m</em>blk, then with m<em>new = max(m</em>old, m_blk):     l<em>new = e^{m</em>old−m<em>new} l</em>old + Σ e^{S<em>blk−m</em>new}     o<em>new = e^{m</em>old−m<em>new} o</em>old + Σ e^{S<em>blk−m</em>new} V_blk   This maintains exact softmax normalization without ever storing the full attention matrix.</p><p>How masking and dropout fit:<ul><li>Causal masking: for a Q tile covering rows [r0, r0+Br), only multiply with K/V tiles whose column range doesn’t exceed the causal boundary; inside a tile, set invalid S entries to −∞ before exponentiation.</li><li>Dropout: generate a RNG mask per score (or per block) on the fly; multiply E[r, j] by dropout<em>mask/keep</em>prob before accumulating v<em>sum and l</em>new. No extra memory needed.</li></ul></p><p>Numerical considerations:<ul><li>Compute S, accumulators l and o in FP32; inputs often in FP16/BF16. The rescaling via m_new prevents overflow/underflow.</li><li>The final division o/l is also done in FP32, and then cast back if needed.</li></ul></p><p>Performance logic (why it’s fast):<ul><li>The naive implementation materializes A = softmax(QK^T), which is N×N and forces O(N^2) HBM traffic. FlashAttention never writes A and reads each K/V tile once per Q tile while keeping Q in SRAM, turning the bottleneck from memory-bound to compute-bound.</li><li>Complexity: same O(N^2 d) FLOPs, but memory traffic drops from O(N^2) to roughly O(N d + N d_v) plus tile-sized working sets.</li><li>Kernel fuses: QK^T, masking, softmax, dropout, and AV all in one pass.</li></ul></p><p>High-level pseudocode (per head): for q<em>block in blocks</em>of_rows(N, Br):   Q<em>tile = load(Q[q</em>block, :])        // to SRAM   m = fill(Br, -inf); l = 0; o = 0    // FP32   for kv<em>block in blocks</em>of_rows(N, Bc):     K<em>tile = load(K[kv</em>block, :])     // to SRAM     V<em>tile = load(V[kv</em>block, :])     // to SRAM     S = (Q<em>tile @ K</em>tile^T) * s       // tensor cores     apply<em>mask</em>in_place(S)     // row-wise update     m_blk = rowmax(S)     m<em>new = max(m, m</em>blk)     alpha = exp(m - m_new)     E = exp(S - m_new[:, None])     if dropout: E *= dropout<em>mask / p</em>keep     l = alpha * l + rowsum(E)     o = alpha[:, None] * o + E @ V_tile     m = m_new   O[q_block, :] = o / l[:, None]</p><p>What FlashAttention-2/3 change (brief):<ul><li>Same mathematics and online-softmax invariants. They improve GPU utilization:</li></ul>- More parallelism by splitting the K/V sweep across thread blocks and reducing partial results.   - Better pipelining of global→shared loads (cp.async), vectorization, and tensor-core scheduling.   - Support for longer sequences, mixed head dims, and higher throughput on newer architectures.   - Still exact, still no attention matrix materialization.</p><p>Big picture:<ul><li>FlashAttention is an IO-aware, tiled, fused kernel for exact attention that hinges on the online softmax update. The core state per query row is just three things: the running max m, the running sum l, and the running weighted value o; stream tiles of K/V, update these, and normalize once at the end.</li></ul></p></div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p style="color: #e74c3c;"><strong>Error:</strong> [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:streamGenerateContent?alt=sse: [404 Not Found] models/gemini-1.5-pro-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.</p></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

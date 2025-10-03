@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Model Comparison - 2025-09-18 14:17:07</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .metadata {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .round {
+            margin-bottom: 40px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .user-prompt {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-weight: 500;
+        }
+        .assessment-prompt {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .responses {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: #ddd;
+        }
+        .response {
+            background: white;
+            padding: 20px;
+            position: relative;
+        }
+        .model-name {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        .response-content {
+            color: #333;
+            line-height: 1.6;
+        }
+        .response-content p { margin-bottom: 10px; }
+        .response-content ul, .response-content ol { margin-left: 20px; margin-bottom: 10px; }
+        .response-content li { margin-bottom: 5px; }
+        .response-content pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .response-content code {
+            background: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .response-content pre code {
+            background: transparent;
+            padding: 0;
+        }
+        .error {
+            color: #d32f2f;
+            font-style: italic;
+        }
+        .usage-info {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            font-size: 0.85em;
+            color: #666;
+        }
+        .timestamp {
+            font-size: 0.85em;
+            color: #999;
+            margin-top: 10px;
+        }
+        @media (max-width: 1200px) {
+            .responses { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI Model Comparison</h1>
+            <div class="metadata">
+                <p>Session started: 2025-09-18T14:15:46.556302</p>
+                <p>Total rounds: 5</p>
+                <p>Generated: 2025-09-18 14:17:07</p>
+            </div>
+        </div>
+        
+        <div class="round">
+            <div class="user-prompt">
+                <div>Round 1</div>
+                <div>Hello</div>
+                <div class="timestamp">Time: 2025-09-18T14:16:02.525403</div>
+            </div>
+            <div class="responses">
+                <div class="response">
+                    <div class="model-name">Anthropic</div>
+                    <div class="error">Error: Error code: 529 - {&#x27;type&#x27;: &#x27;error&#x27;, &#x27;error&#x27;: {&#x27;type&#x27;: &#x27;overloaded_error&#x27;, &#x27;message&#x27;: &#x27;Overloaded&#x27;}, &#x27;request_id&#x27;: None}</div><div class="usage-info">⏱️ Failed after: 15.97s<br>🔄 Failed after 1 attempts<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">OpenAI</div>
+                    <div class="response-content"><p>Hello! How can I help you today?</p></div><div class="usage-info">Tokens - Input: 7 |
+                                    Output: 18 |
+                                    Total: 25<br>⏱️ Response time: 3.06s<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">Gemini</div>
+                    <div class="response-content"><p>Hello there! How can I help you today?</p></div><div class="usage-info">Tokens - Input: 2 |
+                                    Output: 10 |
+                                    Total: 541<br>⏱️ Response time: 6.94s<br></div>
+                </div>
+            </div>
+        </div>
+        <div class="round">
+            <div class="user-prompt">
+                <div>Round 2</div>
+                <div>Write a haiku</div>
+                <div class="timestamp">Time: 2025-09-18T14:16:18.491419</div>
+            </div>
+            <div class="responses">
+                <div class="response">
+                    <div class="model-name">Anthropic</div>
+                    <div class="error">Error: Error code: 529 - {&#x27;type&#x27;: &#x27;error&#x27;, &#x27;error&#x27;: {&#x27;type&#x27;: &#x27;overloaded_error&#x27;, &#x27;message&#x27;: &#x27;Overloaded&#x27;}, &#x27;request_id&#x27;: None}</div><div class="usage-info">⏱️ Failed after: 15.96s<br>🔄 Failed after 1 attempts<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">OpenAI</div>
+                    <div class="response-content"><p>Dawn sifts through pine boughs
+mist lifts from the quiet lake
+loons stitch light with calls</p></div><div class="usage-info">Tokens - Input: 10 |
+                                    Output: 672 |
+                                    Total: 682<br>⏱️ Response time: 8.25s<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">Gemini</div>
+                    <div class="response-content"><p>Green grass, summer sun,
+A cool breeze blows through the trees,
+The world is at peace.</p></div><div class="usage-info">Tokens - Input: 5 |
+                                    Output: 22 |
+                                    Total: 1324<br>⏱️ Response time: 13.66s<br></div>
+                </div>
+            </div>
+        </div>
+        <div class="round">
+            <div class="user-prompt">
+                <div>Round 3</div>
+                <div>Explain quantum physics</div>
+                <div class="timestamp">Time: 2025-09-18T14:16:51.736518</div>
+            </div>
+            <div class="responses">
+                <div class="response">
+                    <div class="model-name">Anthropic</div>
+                    <div class="error">Error: Error code: 529 - {&#x27;type&#x27;: &#x27;error&#x27;, &#x27;error&#x27;: {&#x27;type&#x27;: &#x27;overloaded_error&#x27;, &#x27;message&#x27;: &#x27;Overloaded&#x27;}, &#x27;request_id&#x27;: None}</div><div class="usage-info">⏱️ Failed after: 15.75s<br>🔄 Failed after 1 attempts<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">OpenAI</div>
+                    <div class="response-content"><p>Quantum physics is the framework we use to describe nature at the smallest scales—atoms, electrons, photons—and it replaces certainty with probabilities. Instead of objects having exact positions and paths, quantum theory says systems evolve as waves of possibility, and measurements extract definite outcomes according to precise statistical rules.</p><p>Key ideas
+<ul>
+<li>Quantization: Certain properties (like energy in atoms or light) come in discrete packets called quanta (e.g., photons).</li>
+<li>Wave–particle duality: Matter and light behave like both waves and particles; which aspect shows up depends on how you measure them.</li>
+<li>Superposition: A system can be in multiple possible states at once; interference between these possibilities gives distinctly quantum effects.</li>
+<li>Measurement and the Born rule: You only get a definite result when you measure; outcomes are random but with probabilities given by the wave’s intensity.</li>
+<li>Uncertainty principle: Some pairs of properties (like position and momentum) can’t both be known arbitrarily well; this is a built‑in feature of nature, not a limitation of instruments.</li>
+<li>Entanglement: Parts of a system can share correlations stronger than any classical link; measuring one immediately tells you about the other, without enabling faster‑than‑light signaling.</li>
+<li>Dynamics: Between measurements, the wavefunction evolves smoothly and deterministically via the Schrödinger equation (or its relativistic extensions).</li>
+<li>Observables and operators: Measurable quantities are represented by operators; non‑commuting operators imply uncertainty and measurement order matters.</li>
+<li>Tunneling: Particles can cross energy barriers they couldn’t classically, enabling devices like tunnel diodes and scanning tunneling microscopes.</li>
+<li>Statistics of identical particles: Fermions (e.g., electrons) obey the Pauli exclusion principle; bosons (e.g., photons) like to bunch, enabling lasers and superfluidity.</li>
+</ul></p><p>From particles to fields
+<ul>
+<li>Quantum field theory treats particles as excitations of underlying fields and meshes quantum mechanics with special relativity; it underpins the Standard Model of particle physics.</li>
+</ul></p><p>Why it matters (technologies)
+<ul>
+<li>Semiconductors and transistors, LEDs and lasers, atomic clocks (and thus GPS), MRI and PET, superconductors and SQUIDs, secure quantum communication (QKD), and emerging quantum computers all rely on quantum physics.</li>
+</ul></p><p>Open questions and interpretations
+<ul>
+<li>Competing interpretations (Copenhagen, many‑worlds, pilot wave, objective collapse) tell different stories about what’s “really” happening but agree on experiments so far.</li>
+<li>Big unresolved goals include unifying quantum physics with gravity (quantum gravity) and fully explaining the measurement “collapse” via or beyond decoherence.</li>
+</ul></p><p>If you tell me your preferred level—intuitive analogies, simple math, or more formal—I can dive deeper into any part (e.g., double‑slit experiment, entanglement, tunneling, or how qubits work).</p></div><div class="usage-info">Tokens - Input: 9 |
+                                    Output: 1356 |
+                                    Total: 1365<br>⏱️ Response time: 21.57s<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">Gemini</div>
+                    <div class="response-content"><p>Of course! Explaining quantum physics can be tricky because it&#x27;s famously counter-intuitive. Let&#x27;s break it down using analogies to make it as clear as possible.</p><h3>The Big Picture: Two Sets of Rules for the Universe</h3><p>Imagine physics has two different rulebooks:</p><ol>
+<li> <strong>Classical Physics (Newton&#x27;s Laws, etc.):</strong> This is the rulebook for everything big enough for us to see, from a thrown baseball to a planet orbiting the sun. It&#x27;s intuitive—things have a definite location, a definite speed, and follow predictable paths.</li>
+</ol><ol>
+<li> <strong>Quantum Physics:</strong> This is the rulebook for the ultra-small world of atoms, electrons, and photons. Down here, the rules are bizarre and probabilistic. Things don&#x27;t behave like tiny baseballs; they act in ways that defy our everyday experience.</li>
+</ol><p>The core idea of quantum physics is this: <strong>At the smallest scales, matter and energy behave in strange, unexpected ways that are fundamentally different from our macroscopic world.</strong></p><p>Here are the key concepts that make it so weird and wonderful:</p><p>---</p><h3>1. Quantization: The World is &quot;Pixelated&quot;</h3><p>This is where the name &quot;quantum&quot; comes from. It means a specific, discrete amount.</p><ul>
+<li>  <strong>Classical Idea:</strong> You can walk up a ramp and stop at any possible height along the way. Your energy is continuous.</li>
+<li>  <strong>Quantum Idea:</strong> You can only walk up a staircase. You can be on step 1, or step 2, but never on &quot;step 1.5.&quot; Your energy is <strong>quantized</strong>—it comes in distinct packets, or &quot;quanta.&quot;</li>
+</ul><p>An electron orbiting an atom can&#x27;t just be at any distance or have any energy. It can only occupy specific energy levels (the &quot;steps&quot; on the staircase). When it jumps from a higher step to a lower one, it releases a packet of light (a photon) with a very specific amount of energy, which we see as a specific color. This is how neon signs and lasers work!</p><p>---</p><h3>2. Wave-Particle Duality: Everything is a Bit of Both</h3><p>This is one of the most mind-bending concepts.</p><ul>
+<li>  <strong>Classical Idea:</strong> Something is either a solid object (a particle, like a marble) or a wave (like a ripple in water). It can&#x27;t be both.</li>
+<li>  <strong>Quantum Idea:</strong> Every quantum object, like an electron or a photon, acts as <strong>both a particle and a wave at the same time.</strong></li>
+</ul><p>Think of the famous <strong>Double-Slit Experiment</strong>:
+<ol>
+<li> If you shoot tiny marbles (particles) through two slits in a wall, you&#x27;ll find two distinct lines of marbles on the back wall, right behind the slits.</li>
+<li> If you send waves through the slits, the waves will interfere with each other, creating a complex pattern of many lines (an &quot;interference pattern&quot;).</li>
+<li> <strong>Here&#x27;s the weird part:</strong> When scientists shoot electrons, one by one, through the two slits, the electrons land as single dots (like particles), but over time, they build up to form the wave-like interference pattern!</li>
+</ol></p><p>It&#x27;s as if each electron, traveling alone, somehow goes through <strong>both slits at once</strong> as a wave and interferes with itself. This dual nature is fundamental to the quantum world.</p><p>---</p><h3>3. Superposition &amp; The Observer Effect: Maybe-Land</h3><ul>
+<li>  <strong>Classical Idea:</strong> A coin is either heads or tails. It can&#x27;t be both.</li>
+</ul>
+<em>   <strong>Quantum Idea:</strong> Until you measure it, a quantum system is in a <strong>superposition</strong> of all its possible states at once. The electron </em>is* in a fuzzy cloud of probability, not a single location. The coin is spinning in the air, a blur of both heads and tails.<p>This leads to the <strong>Observer Effect</strong>. The moment you &quot;observe&quot; or measure a quantum system, you force it to &quot;pick&quot; one state.
+<ul>
+<li>  When you look at the spinning coin, it lands, and you see either heads or tails.</li>
+<li>  If you place a detector at the double-slits to see which slit the electron goes through, the interference pattern vanishes! You get just two lines, as if you were shooting marbles. The very act of measuring forced the electron to behave like a particle and pick a single path.</li>
+</ul></p><p>This is the source of the famous <strong>Schrödinger&#x27;s Cat</strong> thought experiment. The cat in the box is linked to a quantum event. Until you open the box (measure it), the cat is in a superposition of being both alive and dead simultaneously.</p><p>---</p><h3>4. Quantum Entanglement: &quot;Spooky Action at a Distance&quot;</h3><p>This is what Einstein called it, and it&#x27;s as strange as it sounds.</p><ul>
+<li>  <strong>The Idea:</strong> You can link two quantum particles in a special way, making them &quot;entangled.&quot; Once linked, their fates are intertwined, no matter how far apart they are. If you measure a property of one particle (like its &quot;spin&quot;), you will instantly know the corresponding property of its partner, even if it&#x27;s on the other side of the galaxy.</li>
+</ul><em>   <strong>Analogy:</strong> Imagine you have a pair of &quot;magic coins.&quot; You know one is heads and one is tails, but you don&#x27;t know which is which. You give one to a friend who travels to Mars. The moment you look at your coin and see it&#x27;s heads, you know </em>instantly* that your friend&#x27;s coin is tails.<p>The &quot;spooky&quot; part is that the properties weren&#x27;t decided beforehand. Both coins were in a superposition until one was measured. This instantaneous connection doesn&#x27;t violate the speed of light, because no information is being <em>sent</em>—it&#x27;s a pre-existing correlation that is revealed by measurement.</p><h3>Why Does Quantum Physics Matter?</h3><p>It might seem like abstract philosophical weirdness, but it&#x27;s the foundation of our modern world. Without it, we wouldn&#x27;t have:</p><ul>
+<li>  <strong>Computers and Smartphones:</strong> The transistors that power all modern electronics rely on the quantum behavior of electrons in semiconductors.</li>
+<li>  <strong>Lasers:</strong> Used in everything from Blu-ray players to surgery.</li>
+<li>  <strong>MRI Machines:</strong> Medical imaging that uses quantum properties of atomic nuclei.</li>
+<li>  <strong>GPS:</strong> The atomic clocks needed for GPS to work are governed by quantum mechanics.</li>
+<li>  <strong>The Future:</strong> Quantum computing, quantum cryptography, and new materials are all being developed based on these principles.</li>
+</ul><strong>In summary:</strong> Quantum physics is the rulebook for the universe at its most fundamental level. It tells us that reality is quantized (pixelated), probabilistic (governed by chance), and deeply interconnected in ways our everyday intuition can&#x27;t grasp. It&#x27;s weird, but it works, and it powers the technology all around us.</div><div class="usage-info">Tokens - Input: 4 |
+                                    Output: 1439 |
+                                    Total: 3344<br>⏱️ Response time: 33.24s<br></div>
+                </div>
+            </div>
+        </div>
+        <div class="round">
+            <div class="user-prompt">
+                <div>Round 4</div>
+                <div></div>
+                <div class="timestamp">Time: 2025-09-18T14:16:51.944897</div>
+            </div>
+            <div class="responses">
+                <div class="response">
+                    <div class="model-name">Anthropic</div>
+                    <div class="error">Error: Error code: 400 - {&#x27;type&#x27;: &#x27;error&#x27;, &#x27;error&#x27;: {&#x27;type&#x27;: &#x27;invalid_request_error&#x27;, &#x27;message&#x27;: &#x27;messages: at least one message is required&#x27;}, &#x27;request_id&#x27;: &#x27;req_011CTGQLeidabsDa1yKtJ9ju&#x27;}</div><div class="usage-info">⏱️ Failed after: 0.12s<br>🔄 Failed after 1 attempts<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">OpenAI</div>
+                    <div class="error">Error: Error code: 400 - {&#x27;error&#x27;: {&#x27;message&#x27;: &quot;Invalid &#x27;messages&#x27;: empty array. Expected an array with minimum length 1, but got an empty array instead.&quot;, &#x27;type&#x27;: &#x27;invalid_request_error&#x27;, &#x27;param&#x27;: &#x27;messages&#x27;, &#x27;code&#x27;: &#x27;empty_array&#x27;}}</div><div class="usage-info">⏱️ Failed after: 0.20s<br>🔄 Failed after 1 attempts<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">Gemini</div>
+                    <div class="error">Error: list index out of range</div><div class="usage-info">⏱️ Failed after: 0.00s<br>🔄 Failed after 1 attempts<br></div>
+                </div>
+            </div>
+        </div>
+        <div class="round">
+            <div class="user-prompt">
+                <div>Round 5</div>
+                <div>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+                <div class="timestamp">Time: 2025-09-18T14:17:07.444104</div>
+            </div>
+            <div class="responses">
+                <div class="response">
+                    <div class="model-name">Anthropic</div>
+                    <div class="error">Error: Error code: 529 - {&#x27;type&#x27;: &#x27;error&#x27;, &#x27;error&#x27;: {&#x27;type&#x27;: &#x27;overloaded_error&#x27;, &#x27;message&#x27;: &#x27;Overloaded&#x27;}, &#x27;request_id&#x27;: None}</div><div class="usage-info">⏱️ Failed after: 15.50s<br>🔄 Failed after 1 attempts<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">OpenAI</div>
+                    <div class="response-content"><p>It looks like you might be frustrated—or just testing. How can I help right now?</p></div><div class="usage-info">Tokens - Input: 131 |
+                                    Output: 348 |
+                                    Total: 479<br>⏱️ Response time: 10.45s<br></div>
+                </div>
+                <div class="response">
+                    <div class="model-name">Gemini</div>
+                    <div class="response-content"><p>That&#x27;s a lot of &#x27;a&#x27;s!</p><p>It looks like you&#x27;re either:
+<ul>
+<li>  Testing my character limit.</li>
+<li>  Expressing a very, very long sigh.</li>
+<li>  Your cat has discovered the keyboard.</li>
+</ul></p><p>In any case, I&#x27;m here and ready. Is there something I can help you with?</p></div><div class="usage-info">Tokens - Input: 126 |
+                                    Output: 71 |
+                                    Total: 1305<br>⏱️ Response time: 12.92s<br></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

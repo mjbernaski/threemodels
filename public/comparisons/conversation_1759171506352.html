@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        .model-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-29T18:44:25.730Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-29T18:45:06.351Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-29T18:45:06.351Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>what can you tell me about Tri Dao?   what did he invent?</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>Tri Dao is a computer scientist and researcher known for his significant contributions to efficient deep learning, particularly in the area of attention mechanisms and memory optimization. Here are his key contributions:</p><h2>Major Inventions/Contributions:</h2><p><strong>FlashAttention (2022)</strong>- This is probably his most famous work. FlashAttention is an algorithm that makes the attention mechanism in transformers much more memory-efficient and faster, without sacrificing accuracy. This was crucial for scaling up large language models and making them more practical to train and deploy.</p><p><strong>FlashAttention-2 (2023)</strong>- An improved version that further optimized the attention computation, achieving even better performance.</p><p><h2>Background:</h2><ul><li>He&#39;s a PhD student/researcher at Stanford University</li><li>Works in machine learning systems, focusing on making deep learning more efficient</li><li>His research sits at the intersection of algorithms, systems, and hardware optimization</li></ul></p><p><h2>Impact:</h2>His work on FlashAttention has been widely adopted in the AI community because it addresses one of the key bottlenecks in training large language models - the memory and computational requirements of the attention mechanism. This has helped make large models more accessible and practical.</p><p>His contributions are particularly important as the field pushes toward ever-larger models, where efficiency optimizations like his become critical for practical deployment.</p><p>Is there a particular aspect of his work you&#39;d like me to elaborate on?</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 25 in / 299 out / 0 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>Tri Dao is a computer scientist and machine learning researcher known for making modern sequence models faster and more memory‑efficient. He earned his PhD in Computer Science at Stanford in the HazyResearch lab (Prof. Christopher Ré) and, as of 2024, is an assistant professor of Computer Science at Princeton University.</p><p>What he’s best known for<ul><li>FlashAttention (2022): An IO‑aware, tiling-based algorithm and CUDA kernels for exact Transformer attention that dramatically reduce memory traffic and speed up training/inference. Widely adopted across frameworks and libraries; followed by FlashAttention‑2 with further speedups.</li><li>Mamba (2023) and Mamba‑2 (2024): “Selective State Space” sequence models that achieve linear-time scaling with strong accuracy, offering a competitive alternative to Transformers for long sequences.</li><li>MegaBlocks (Mixture‑of‑Experts efficiency): Block‑sparse GPU kernels and methods to train MoE models more efficiently.</li></ul></p><p>In short: Tri Dao co-invented FlashAttention and the Mamba family of state space models, and has led several influential projects on efficient deep learning systems and kernels.</p></div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>Of course. Tri Dao has recently become one of the most influential figures in the practical implementation of AI, particularly for large language models (LLMs). His work has been a crucial enabler for the massive models we see today.</p><p>Here’s a breakdown of who he is and what he invented.</p><h3>Who is Tri Dao?</h3><ul><li><strong>AI Researcher:</strong>Tri Dao is a Ph.D. candidate in Computer Science at Stanford University.</li><li><strong>Expert in Systems and ML:</strong>His research lies at the intersection of machine learning algorithms and computer hardware systems. He focuses on creating algorithms that are highly efficient and &quot;hardware-aware&quot;—meaning they are designed specifically to take advantage of the architecture of modern GPUs.</li><li><strong>Co-founder and Chief Scientist at Together AI:</strong>He is a key figure at Together AI, a company focused on building open-source generative AI and the cloud infrastructure to run it efficiently.</li></ul><h3>What Did He Invent? The FlashAttention Algorithm</h3><p>Tri Dao is most famous for being the lead author and inventor of<strong>FlashAttention</strong>and its successor,<strong>FlashAttention-2</strong>. This isn&#39;t a new type of model, but rather a groundbreaking new algorithm for a critical component<em>inside</em>AI models.</p><p>To understand why this is so important, you need to know a little about how models like GPT-4 work.</p><p>#### The Problem: The &quot;Attention&quot; Bottleneck in Transformers</p><ol><li><strong>Transformers and Attention:</strong>Modern LLMs are built on an architecture called the &quot;Transformer.&quot; The core mechanism that gives these models their power is called<strong>self-attention</strong>. This is how the model weighs the importance of different words in a sentence relative to each other to understand context.</li><li><strong>The Memory Wall:</strong>The standard way of calculating attention is incredibly memory-intensive. It requires creating a huge intermediate matrix (the &quot;attention matrix&quot;) that grows quadratically with the length of the input text (O(N²)).</li><li><strong>The GPU Bottleneck:</strong>GPUs have two main types of memory: a very large but relatively slow main memory (HBM - High Bandwidth Memory) and a much smaller but extremely fast on-chip memory (SRAM). The standard attention algorithm constantly had to read from and write to the slow HBM, making it the primary bottleneck. This process of moving data back and forth is much slower than the actual computation.</li></ol><p>This memory bottleneck made it extremely slow and expensive to train models and severely limited how much text they could process at once (their &quot;context window&quot;).</p><p>#### The Solution: FlashAttention</p><p>Tri Dao’s key insight was to redesign the attention algorithm to avoid these slow memory transfers by being smarter about the GPU&#39;s architecture.</p><p>FlashAttention solves the problem in three main ways:</p><ol><li><strong>Tiling (or Blocking):</strong>Instead of calculating the entire massive attention matrix at once, FlashAttention breaks it into smaller blocks or &quot;tiles.&quot; These tiles are small enough to fit into the GPU&#39;s super-fast SRAM.</li><li><strong>Kernel Fusion:</strong>It fuses multiple steps of the attention calculation (like matrix multiplication, masking, and the softmax operation) into a single operation (a &quot;GPU kernel&quot;). This means the GPU performs all these steps on a tile while it&#39;s in fast SRAM, without ever writing the intermediate results back to the slow HBM.</li><li><strong>Recomputation:</strong>Counter-intuitively, FlashAttention recomputes some small, intermediate values on the fly rather than storing them in HBM and reading them back. Because the computation on a GPU is so much faster than the memory transfer, this recomputation is actually much faster overall.</li></ol><h3>The Impact of FlashAttention</h3><p>The invention of FlashAttention was not just an incremental improvement; it was a fundamental breakthrough with massive consequences:</p><ol><li><strong>Massive Speedups:</strong>It made training and running transformer models<strong>up to 3 times faster</strong>.</li><li><strong>Longer Context Windows:</strong>By dramatically reducing memory usage, it allowed models to handle much longer sequences of text. This is a direct enabler of models that can now process entire books or large codebases in one go.</li><li><strong>Reduced Costs:</strong>Faster training and inference directly translate to lower computational costs, making the development and deployment of large-scale AI more accessible.</li><li><strong>Industry-Wide Adoption:</strong>FlashAttention was so effective that it has become the<em>de facto standard</em>in the AI world. It&#39;s integrated into all major deep learning libraries (like PyTorch) and is used by virtually every major AI company, including OpenAI, Meta, Anthropic, and Google, to train and serve their flagship models.</li></ol><p>In short,<strong>Tri Dao invented an algorithm that fundamentally fixed the biggest performance bottleneck in the Transformer architecture.</strong>His work is a prime example of how deeply understanding the underlying hardware can unlock massive gains in software performance and enable new capabilities in artificial intelligence.</p></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

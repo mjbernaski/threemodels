@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        .model-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-29T18:36:57.402Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-29T18:37:37.110Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-29T18:37:37.110Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>how does flash attention tiling improve performance?</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>Flash Attention&#39;s tiling strategy dramatically improves performance by fundamentally changing how attention computation interacts with GPU memory hierarchy. Here&#39;s how:</p><h2>The Core Problem</h2>Standard attention requires materializing the full N×N attention matrix in GPU memory, which:<ul><li>Uses O(N²) memory</li><li>Creates memory bandwidth bottlenecks</li><li>Doesn&#39;t fit in fast on-chip memory for long sequences</li></ul></p><p><h2>How Tiling Solves This</h2><h3>1.<strong>Block-wise Computation</strong></h3><pre><code class="language-">Instead of computing entire N×N matrix: ┌─────────────────┐ │  Full Attention │  ← Too large for fast memory │     Matrix      │ └─────────────────┘</p><p>Tiling processes small blocks: ┌───┬───┬───┐ │ B │ B │ B │  ← Each block fits in SRAM ├───┼───┼───┤ │ B │ B │ B │ └───┴───┴───┘</code></pre></p><p><h3>2.<strong>Memory Hierarchy Optimization</strong></h3><ul><li><strong>SRAM (fast, small)</strong>: Stores current tile being processed</li><li><strong>HBM (slow, large)</strong>: Only accessed for loading inputs and storing final results</li><li><strong>Eliminates intermediate storage</strong>of the full attention matrix</li></ul></p><p><h3>3.<strong>Incremental Softmax Computation</strong></h3>Traditional softmax requires two passes over the full matrix:<pre><code class="language-python"># Pass 1: Find max max<em>val = max(all</em>attention_scores)<h1>Pass 2: Compute softmax</h1>softmax = exp(scores - max<em>val) / sum(exp(scores - max</em>val))</code></pre></p><p>Flash Attention uses<strong>online softmax</strong>with running statistics:<pre><code class="language-python"># Process each tile incrementally for tile in tiles:     new<em>max = max(current</em>max, tile_max)     # Update running sum with rescaling     updated<em>sum = old</em>sum * exp(old<em>max - new</em>max) + tile_sum</code></pre></p><p><h2>Performance Benefits</h2><h3><strong>Memory Efficiency</strong></h3><ul><li>Memory usage: O(N²) → O(N)</li><li>No intermediate attention matrix storage</li><li>Better cache utilization</li></ul></p><p><h3><strong>Bandwidth Optimization</strong></h3><ul><li>Reduces HBM reads/writes by ~7-8x</li><li>Each element read/written fewer times</li><li>More compute happens on-chip</li></ul></p><p><h3><strong>Scalability</strong></h3><ul><li>Enables much longer sequences (100K+ tokens)</li><li>Memory requirements grow linearly, not quadratically</li><li>Performance degrades gracefully with sequence length</li></ul></p><p><h2>Real-World Impact</h2><p><strong>Speed improvements:</strong><ul><li>2-4x faster training</li><li>5-20x less memory usage</li><li>Enables previously impossible sequence lengths</li></ul></p><p><strong>Example</strong>: For sequence length 2048:<ul><li>Standard attention: ~16GB for attention matrix alone</li><li>Flash Attention: ~32MB peak memory usage</li></ul></p><p>The key insight is that by carefully orchestrating computation to match hardware memory hierarchy, Flash Attention achieves the same mathematical result while being dramatically more efficient.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 16 in / 699 out / 0 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>FlashAttention speeds up attention by computing it in small tiles that fit in fast on‑chip memory (GPU SRAM/shared memory), instead of materializing the full N×N attention matrix in HBM. The key idea is IO-awareness: minimize slow memory traffic and maximize data reuse, while keeping the result exact.</p><p>What tiling changes and why it helps<ul><li>Avoids materializing scores/probabilities: Naive attention computes S = QK^T, writes S to HBM, reads it back for softmax, writes P, then reads P again to compute PV. These O(N^2) reads/writes dominate runtime. FlashAttention tiles and fuses these steps so S and P never leave registers/shared memory; only Q, K, V, and the final output O are written to HBM. This slashes memory traffic.</li><li>Reuses K and V in SRAM: It loads a block of Q and a block of K,V that fit on chip, computes their partial dot products, and immediately consumes them. Each loaded K/V tile is reused across many Q rows, raising arithmetic intensity and better utilizing Tensor Cores.</li><li>Online softmax enables streaming across tiles: For each row i, it maintains running statistics (m<em>i = row max, l</em>i = sum of exp-shifted scores, and an unnormalized output u_i). As new K/V tiles arrive:</li></ul>- Update m_i to the new max.   - Scale l<em>i and u</em>i by exp(old<em>m - new</em>m).   - Add contributions from the current tile: exp(S<em>ij − new</em>m) and exp(S<em>ij − new</em>m) V_j.   - After all tiles, O<em>i = u</em>i / l_i.   This makes the final softmax exact without needing the full row of scores at once.<ul><li>Fused kernel with good locality: Computing QK^T, masking, softmax, dropout (if training), and PV are fused in one or a few kernels, eliminating extra kernel launches and intermediate writes.</li><li>Turns a memory-bound op into a compute-bound one: By cutting O(N^2) IO and keeping data on chip, the kernel can run closer to Tensor Core peak, yielding large speedups and enabling longer sequences.</li></ul></p><p>Training/backward benefits<ul><li>No need to save attention probabilities: Backward recomputes the needed tiles of QK^T on the fly with the same tiling/online-softmax trick, reducing activation memory from O(N^2) to O(Nd).</li><li>Dropout handled on the fly with counter-based RNG, so no dropout mask storage.</li></ul></p><p>Net effects you see in practice<ul><li>Much lower memory footprint (enabling longer context).</li><li>Higher throughput from reduced HBM traffic and better Tensor Core utilization.</li><li>Exact attention (not approximate), numerically stable via the max-trick in the online softmax.</li></ul></p><p>Later versions refine the tiling/execution:<ul><li>FlashAttention-2 improves parallelism and scheduling across tiles/warps.</li><li>FlashAttention-3 (on Hopper) uses hardware features like WGMMA and TMA plus FP8 to further lift throughput.</li></ul></p><p>In short: tiling keeps the hot data (small blocks of Q/K/V, scores, and softmax stats) on chip and streams through sequence length with an online softmax, eliminating O(N^2) memory reads/writes and making attention bandwidth-efficient and fast.</p></div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>Of course! This is an excellent question that gets to the heart of modern transformer optimization.</p><p>Let&#39;s break down how FlashAttention&#39;s tiling improves performance, starting with the problem it solves.</p><p>---</p><h3>The Problem: Standard Attention is &quot;Memory-Bound&quot;</h3><p>First, let&#39;s remember the standard self-attention formula:</p><p>$$ \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $$</p><p>For a sequence of length<code>N</code>and dimension<code>d</code>, the matrices<code>Q</code>,<code>K</code>, and<code>V</code>have a size of<code>N x d</code>. The performance bottleneck comes from the intermediate matrix<code>P = QK^T</code>, which has a size of<strong><code>N x N</code></strong>.</p><p><strong>The Bottleneck:</strong>This<code>N x N</code>matrix is the villain.<em><strong>Quadratic Memory:</strong>Its size grows quadratically with the sequence length. For an<code>N</code>of 64k, this matrix would require<code>64k</em>64k * 4 bytes/float = 16 GB</code>of memory, which is huge.<ul><li><strong>Slow Memory Access:</strong>Modern GPUs have two main types of memory:</li></ul>1.<strong>HBM (High Bandwidth Memory):</strong>This is the large VRAM (e.g., 40GB or 80GB on an A100). It&#39;s big, but relative to the GPU&#39;s processing speed, it&#39;s slow to read from and write to.     2.<strong>SRAM (Static RAM):</strong>This is the extremely fast on-chip cache. It&#39;s tiny (a few megabytes) but lightning-fast.</p><p>The standard attention implementation is<strong>memory-bound</strong>. The GPU spends most of its time waiting to write the giant<code>N x N</code>matrix to slow HBM and then read it back to perform the softmax and multiplication with<code>V</code>. The actual math (the FLOPs) is fast; the data movement is the bottleneck.</p><p>Imagine a master chef (the GPU compute units) who can chop vegetables incredibly fast, but their ingredients are stored in a warehouse down the street (HBM). They spend most of their time walking to the warehouse and back, not actually chopping. The small countertop next to them (SRAM) is barely used.</p><h3>The Solution: FlashAttention and Tiling</h3><p>FlashAttention&#39;s core idea is to<strong>avoid ever writing the full<code>N x N</code>attention matrix to HBM.</strong>It achieves this through two key techniques:<strong>tiling</strong>and<strong>kernel fusion</strong>.</p><p>#### 1. Tiling: Breaking the Problem into Pieces</p><p>Instead of computing the entire<code>QK^T</code>matrix at once, FlashAttention breaks the<code>Q</code>,<code>K</code>, and<code>V</code>matrices into smaller blocks, or<strong>&quot;tiles&quot;</strong>. It then iterates through these tiles, performing the attention computation for each block in a way that can be done entirely within the fast SRAM.</p><p>Here&#39;s the step-by-step process:</p><ol><li><strong>Partitioning:</strong>The<code>Q</code>,<code>K</code>, and<code>V</code>matrices (stored in HBM) are conceptually divided into blocks.</li><li><strong>Outer Loop (over Q):</strong>The algorithm iterates through blocks of<code>Q</code>(let&#39;s call one<code>Q_i</code>).</li><li><strong>Inner Loop (over K and V):</strong>For a given block<code>Q<em>i</code>, it iterates through all the blocks of<code>K</code>and<code>V</code>(let&#39;s call them<code>K</em>j</code>and<code>V_j</code>).</li><li><strong>Compute in SRAM:</strong>In each step of the inner loop:</li></ol>*   Load the block<code>Q_i</code>into fast SRAM.     *   Load the block<code>K_j</code>into fast SRAM.     *   Load the block<code>V_j</code>into fast SRAM.     *   Compute the block-wise score:<code>S<em>{ij} = Q</em>i K<em>j^T</code>. This<code>S</em>{ij}</code>matrix is small enough to<strong>live entirely in SRAM</strong>.     *   Compute the softmax and multiply by<code>V_j</code>for this block.     *   Accumulate the results into an output block<code>O<em>i</code>which also stays in SRAM until all<code>K</em>j</code>and<code>V_j</code>blocks are processed.<ol><li><strong>Write Final Result:</strong>Once the inner loop is complete for<code>Q<em>i</code>, the final, correct output block<code>O</em>i</code>is written back to HBM. The process then repeats for the next block of<code>Q</code>.</li></ol><p>The chef is now bringing small baskets of ingredients (<code>Q<em>i</code>,<code>K</em>j</code>,<code>V<em>j</code>) to their super-fast countertop (SRAM), doing all the chopping and mixing there, and only putting the final plated dish (<code>O</em>i</code>) back out for delivery (HBM). The huge, messy intermediate step of laying out all possible ingredient pairings on the floor (the<code>N x N</code>matrix in HBM) is completely skipped.</p><p>#### 2. The Online Softmax Trick</p><p>A crucial detail is how to compute the softmax correctly without seeing the whole<code>N x N</code>row at once. The<code>softmax</code>of a value depends on all other values in its row (because of the denominator, which is a sum over the whole row).</p><p>FlashAttention uses a clever &quot;online softmax&quot; algorithm. While iterating through the blocks<code>K<em>j</code>, it keeps track of running statistics for the softmax calculation (the running maximum value and the running sum of the exponentials). It uses these to rescale the previous results correctly as it processes each new block. This ensures that the final output<code>O</em>i</code>is mathematically identical to what standard attention would have produced.</p><h3>How Tiling Improves Performance: The Benefits</h3><ol><li><strong>Drastically Reduced HBM Access:</strong>This is the primary benefit. The number of memory reads/writes from HBM scales linearly with<code>N</code>, not quadratically with<code>N^2</code>. Eliminating the read/write of the massive<code>N x N</code>matrix is a huge win.</li></ol><ol><li><strong>Kernel Fusion:</strong>The entire operation—matrix multiplication, scaling, softmax, and multiplication by V—is fused into a single GPU &quot;kernel.&quot; This minimizes the overhead of launching multiple, separate computations and reduces idle time for the GPU. The hardware is kept busy doing useful work rather than waiting.</li></ol><ol><li><strong>Increased Hardware Utilization (Compute-Bound):</strong>Because the GPU isn&#39;t constantly stalled waiting for slow memory, the process becomes<strong>compute-bound</strong>. The limiting factor is now the GPU&#39;s raw mathematical throughput (FLOPs), not its memory bandwidth. This leads to massive speedups, especially for long sequences.</li></ol><h3>Summary: Standard Attention vs. FlashAttention</h3><p>| Feature             | Standard Attention                                   | FlashAttention with Tiling                                     | | ------------------- | ---------------------------------------------------- | -------------------------------------------------------------- | |<strong>Bottleneck</strong>|<strong>Memory-Bound</strong>|<strong>Compute-Bound</strong>| |<strong>Memory Usage</strong>|<code>O(N^2)</code>for the intermediate<code>QK^T</code>matrix        |<code>O(N)</code>(only for storing Q, K, V, and O)                        | |<strong>HBM Access</strong>|<code>O(N^2)</code>reads and writes                            |<code>O(N)</code>reads and writes                                        | |<strong>Core Idea</strong>| Materialize the full<code>N x N</code>attention matrix in HBM | Compute attention block-by-block using fast on-chip SRAM       | |<strong>Performance</strong>| Slow for long sequences (N &gt; 2k)                     |<strong>Up to 7x faster</strong>and uses much less memory for long sequences |</p><p>In conclusion,<strong>FlashAttention&#39;s tiling cleverly restructures the attention calculation to work on small, manageable blocks that fit into the GPU&#39;s ultra-fast SRAM.</strong>This eliminates the massive memory bottleneck of the standard algorithm, making transformers dramatically faster and more memory-efficient for long sequences.</p></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: rgba(30, 30, 50, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: rgba(30, 30, 50, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            color: #e0e0e0;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #e0e0e0;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #2a2a3e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #444;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+
+        .model-content pre {
+            background: #444;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            color: #e0e0e0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-30T14:38:34.399Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-30T14:39:19.196Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-30T14:39:19.196Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>how much might an average API prompt call cost on a frontier LLM?</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>API costs for frontier LLMs vary significantly depending on the model and usage pattern, but here are typical ranges as of late 2024:</p><p><h2>Cost Examples (per 1M tokens):</h2><ul><li><strong>GPT-4o</strong>: ~$2.50-5.00 input, ~$10-15 output</li><li><strong>Claude 3.5 Sonnet</strong>: ~$3.00 input, ~$15 output</li><li><strong>Gemini Pro</strong>: ~$1.25-7.00 input, ~$5.00-21 output</li></ul></p><p><h2>&quot;Average&quot; Prompt Scenarios:</h2><ul><li><strong>Short query</strong>(100 tokens in, 200 out): ~$0.002-0.007</li><li><strong>Medium conversation</strong>(500 in, 500 out): ~$0.008-0.020</li><li><strong>Long document analysis</strong>(3000 in, 1000 out): ~$0.025-0.075</li></ul></p><p><h2>Key Variables:</h2><ul><li>Input tokens are typically 3-5x cheaper than output</li><li>Newer/larger models cost more</li><li>Some providers offer volume discounts</li><li>Caching can reduce repeat input costs</li></ul></p><p><strong>Rough benchmark</strong>: A typical conversational exchange might cost $0.01-0.05, while heavy usage could easily reach $1+ per session.</p><p>For production applications, costs can add up quickly - many developers budget $100-1000+ monthly depending on scale. Always check current pricing as it changes frequently and varies by provider.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 23 in / 334 out / 0 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>Short answer: usually under a few cents per call.</p><p>Rule of thumb for top “frontier” text models (prices change often, but as of recent public pricing):<ul><li>OpenAI GPT‑4o: about $0.005 per 1K input tokens and $0.015 per 1K output tokens</li><li>Anthropic Claude 3.5 Sonnet: about $0.003 per 1K input, $0.015 per 1K output</li><li>Google Gemini 1.5 Pro: about $0.0035 per 1K input, $0.01 per 1K output</li><li>Higher‑end/older tiers (e.g., GPT‑4.1 ~ $0.01/$0.03; Claude Opus ~ $0.015/$0.075) cost more</li></ul></p><p>What that means for a typical chat turn:<ul><li>Small turn (≈500 input tokens, 250 output tokens):</li></ul>- GPT‑4o ≈ $0.006   - Claude 3.5 Sonnet ≈ $0.005   - Gemini 1.5 Pro ≈ $0.004   - GPT‑4.1 ≈ $0.013   - Claude Opus ≈ $0.026<ul><li>Medium turn (≈1K input, 1K output):</li></ul>- GPT‑4o ≈ $0.020   - Claude 3.5 Sonnet ≈ $0.018   - Gemini 1.5 Pro ≈ $0.0135   - GPT‑4.1 ≈ $0.040   - Claude Opus ≈ $0.090</p><p>Quick formula to estimate: cost ≈ (input<em>tokens/1000 × price</em>in) + (output<em>tokens/1000 × price</em>out)</p><p>So, an “average” prompt call on a frontier LLM often lands in the 0.5–3 cent range, depending mainly on how long the output is and which model you choose.</p></div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>Of course. This is an excellent question, but the answer is &quot;it depends&quot; because there is no single &quot;average&quot; call. The cost can vary dramatically, from a tiny fraction of a cent to over a dollar.</p><p>However, I can break down exactly how it&#39;s calculated and give you concrete examples for different &quot;average&quot; scenarios.</p><h3>The Bottom Line: A Quick Answer</h3><p>For a typical interaction with a frontier model like<strong>GPT-4 Turbo</strong>or<strong>Claude 3 Opus</strong>, you can expect a cost in this range:</p><ul><li><strong>Simple Chat/Q&amp;A:</strong><strong>$0.002 to $0.02</strong>(0.2 to 2 cents)</li><li><strong>Email or Short Content Generation:</strong><strong>$0.01 to $0.05</strong>(1 to 5 cents)</li><li><strong>Summarizing a Long Document:</strong><strong>$0.05 to $0.50</strong>(5 to 50 cents)</li><li><strong>Complex Reasoning or Long-Form Writing:</strong><strong>$0.10 to $1.00+</strong>(10 cents to over a dollar)</li></ul><p>Now, let&#39;s look at<em>why</em>there&#39;s such a big range.</p><p>---</p><h3>The Core Pricing Mechanism: Tokens</h3><p>LLM API costs are not based on the number of calls, but on the number of<strong>tokens</strong>you process.</p><ul><li><strong>What is a token?</strong>A token is a piece of a word. On average,<strong>1 token ≈ ¾ of a word</strong>. So, 100 tokens is about 75 words.</li><li><strong>Input vs. Output Pricing:</strong>Critically, providers charge different rates for the tokens you send to the model (the<strong>input prompt</strong>) and the tokens the model generates back to you (the<strong>output completion</strong>). Input is almost always cheaper than output.</li></ul><h3>Current Pricing for Frontier Models (as of mid-2024)</h3><p>Here are the standard pay-as-you-go prices for the leading models. Prices are typically listed per 1 million tokens, which I&#39;ve converted to a per-1,000-token price for easier calculation.</p><p>| Model | Input Price (per 1k tokens) | Output Price (per 1k tokens) | Notes | | :--- | :--- | :--- | :--- | |<strong>OpenAI GPT-4 Turbo</strong>| $0.01 | $0.03 | The most popular high-end choice. | |<strong>Anthropic Claude 3 Opus</strong>| $0.015 | $0.075 | The most powerful (and expensive) model. | |<strong>Google Gemini 1.5 Pro</strong>| $0.007 | $0.021 | Very competitive pricing, especially for input. | |<strong>Anthropic Claude 3 Sonnet</strong>| $0.003 | $0.015 | A &quot;mid-tier&quot; frontier model, great value. |</p><p><em>Note: These prices are for text. Using vision/image capabilities costs extra.</em></p><p>---</p><h3>Cost Scenarios: Calculating an &quot;Average&quot; Call</h3><p>Let&#39;s calculate the cost for a few common tasks.</p><p>#### Scenario 1: A Simple Chatbot Query</p><p>You&#39;re building a customer service bot.<ul><li><strong>Your Input Prompt:</strong>&quot;Hi, can you tell me your return policy? My order number is #12345.&quot; (~20 tokens)</li><li><strong>Model&#39;s Output:</strong>&quot;Certainly! Our policy allows returns within 30 days of purchase for a full refund. Since you provided your order number, I can see your item is eligible. Would you like to start the return process?&quot; (~60 tokens)</li></ul></p><p><strong>Cost Calculation:</strong></p><p><em><strong>GPT-4 Turbo:</strong>(20/1000</em>$0.01) + (60/1000 * $0.03) = $0.0002 + $0.0018 =<strong>$0.002 (0.2 cents)</strong><em><strong>Claude 3 Opus:</strong>(20/1000</em>$0.015) + (60/1000 * $0.075) = $0.0003 + $0.0045 =<strong>$0.0048 (0.48 cents)</strong><em><strong>Gemini 1.5 Pro:</strong>(20/1000</em>$0.007) + (60/1000 * $0.021) = $0.00014 + $0.00126 =<strong>$0.0014 (0.14 cents)</strong></p><p>#### Scenario 2: Drafting a Professional Email</p><p>You ask the model to write a follow-up email after a meeting.<ul><li><strong>Your Input Prompt:</strong>&quot;Write a professional follow-up email to John Smith. Thank him for the meeting today about the Q3 marketing strategy. Mention that we&#39;re excited to move forward with the social media campaign and will send a detailed proposal by Friday EOD.&quot; (~60 tokens)</li><li><strong>Model&#39;s Output:</strong>A well-structured 200-word email. (~270 tokens)</li></ul></p><p><strong>Cost Calculation:</strong></p><p><em><strong>GPT-4 Turbo:</strong>(60/1000</em>$0.01) + (270/1000 * $0.03) = $0.0006 + $0.0081 =<strong>$0.0087 (0.87 cents)</strong><em><strong>Claude 3 Opus:</strong>(60/1000</em>$0.015) + (270/1000 * $0.075) = $0.0009 + $0.02025 =<strong>$0.021 (2.1 cents)</strong><em><strong>Gemini 1.5 Pro:</strong>(60/1000</em>$0.007) + (270/1000 * $0.021) = $0.00042 + $0.00567 =<strong>$0.006 (0.6 cents)</strong></p><p>#### Scenario 3: Summarizing a Long Article</p><p>You submit a 5-page report (approx. 2,500 words) for a summary.<ul><li><strong>Your Input Prompt:</strong>The full text of the report. (~3,300 tokens)</li><li><strong>Model&#39;s Output:</strong>A concise 3-paragraph summary. (~300 tokens)</li></ul></p><p><strong>Cost Calculation:</strong></p><p><em><strong>GPT-4 Turbo:</strong>(3300/1000</em>$0.01) + (300/1000 * $0.03) = $0.033 + $0.009 =<strong>$0.042 (4.2 cents)</strong><em><strong>Claude 3 Opus:</strong>(3300/1000</em>$0.015) + (300/1000 * $0.075) = $0.0495 + $0.0225 =<strong>$0.072 (7.2 cents)</strong><em><strong>Gemini 1.5 Pro:</strong>(3300/1000</em>$0.007) + (300/1000 * $0.021) = $0.0231 + $0.0063 =<strong>$0.0294 (2.9 cents)</strong></p><p>This scenario highlights how a model with cheaper input costs, like Gemini 1.5 Pro, can be more economical for tasks involving large amounts of context.</p><h3>Key Takeaways</h3><ol><li><strong>It&#39;s a Game of Tokens:</strong>The cost is directly tied to the length of your prompt and the length of the model&#39;s response.</li><li><strong>Output Costs More:</strong>Generating text is more computationally intensive, so it&#39;s priced higher. This is why tasks that produce long outputs (like writing an essay) cost more than tasks that produce short outputs (like classification).</li><li><strong>Model Choice Matters:</strong>The most powerful model (Claude 3 Opus) is significantly more expensive than its competitors for the same task. Choosing the right model for your needs (e.g., using the cheaper Claude 3 Sonnet for simpler tasks) is key to managing costs.</li><li><strong>The &quot;Average&quot; is Misleading:</strong>Your &quot;average&quot; cost will depend entirely on your use case. A research tool that summarizes legal documents will have a much higher average cost per call than a simple chatbot.</li></ol></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

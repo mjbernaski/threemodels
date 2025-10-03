@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: rgba(30, 30, 50, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: rgba(30, 30, 50, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            color: #e0e0e0;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #e0e0e0;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #2a2a3e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #444;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+
+        .model-content pre {
+            background: #444;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            color: #e0e0e0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-10-03T13:23:12.977Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-10-03T13:23:37.291Z<br>
+            <strong>Build:</strong> 1.0.0+1759497719625
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-10-03T13:23:37.291Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>you are a &quot;devil&#39;s advocate.&quot;   I think immigration should be free and wide.</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>I&#39;ll challenge that position from several angles:</p><p><strong>Economic concerns</strong>: Unrestricted immigration could depress wages for lower-skilled workers who are already citizens, as you&#39;d dramatically increase labor supply. Why should current residents bear the economic costs of unlimited competition for jobs and housing? Countries like Denmark have seen measurable wage impacts in certain sectors.</p><p><strong>Infrastructure strain</strong>: Public services, schools, hospitals, and housing weren&#39;t designed for unlimited population growth. Even wealthy countries struggle with housing crises - how would they absorb potentially millions of new residents annually without severely degrading quality of life for everyone?</p><p><strong>Cultural cohesion</strong>: Societies need some shared values and institutions to function. Extremely rapid demographic change could fragment social trust and civic participation. Even Canada and Australia, immigration success stories, maintain selective systems rather than open borders.</p><p><strong>Democratic legitimacy</strong>: Don&#39;t citizens have a right to decide who joins their political community? Open borders essentially eliminates national sovereignty and democratic self-determination. Why should current citizens lose control over this fundamental aspect of their society?</p><p><strong>Security risks</strong>: No screening means no ability to exclude those with criminal backgrounds or security threats. Every country maintains some border controls for public safety reasons.</p><p>How do you address these practical concerns while maintaining your principle of free movement?</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 25 in / 267 out / 292 total<br>
+                        <strong>Response time:</strong> 10.96s
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>Happy to play devil’s advocate. Here are the strongest objections to free and wide immigration:</p><ul><li>Absorptive capacity: Sudden, large inflows can overwhelm housing, schools, hospitals, and transit. Even wealthy countries struggle to expand supply fast enough, pushing up rents and wait times and fueling local resentment.</li></ul><ul><li>Labor market pressures: Rapid increases in low- and mid‑skill labor can compress wages for incumbent workers in those segments, weaken unions’ bargaining power, and incentivize employers to substitute cheaper labor for productivity‑enhancing investment.</li></ul><ul><li>Fiscal strain and timing: Newcomers are often net contributors long‑term, but the short‑term costs (education, language training, health care, settlement) fall on local budgets immediately. Cities/states can face deficits without federal backstops.</li></ul><ul><li>Social cohesion and political backlash: Very fast demographic change can outpace integration capacity, lowering social trust and triggering nativist movements. That backlash can end up producing harsher policies than a managed approach would.</li></ul><ul><li>Rule‑of‑law and security screening: States have legitimate interests in vetting entrants (criminal records, trafficking, security risks). Fully open borders limit screening leverage and can make enforcement against bad actors harder.</li></ul><ul><li>Brain drain from poorer countries: Free movement can pull scarce professionals (doctors, engineers, teachers) out of origin countries, slowing institution‑building and public service delivery, even if remittances help households.</li></ul><ul><li>Inequality within host countries: Gains from immigration may flow to capital owners and high‑skill natives (cheaper services, complementary skills) while concentrated costs hit particular neighborhoods and occupations.</li></ul><ul><li>Environmental and infrastructure externalities: Rapid population growth strains water, energy grids, and land use; if migrants move to high‑emission lifestyles, global emissions can rise absent strong climate policy.</li></ul><ul><li>International legitimacy: Sovereign control of borders is a widely accepted norm. Abruptly discarding it without broad democratic consent can undermine trust in institutions and fuel constitutional challenges.</li></ul><p>Possible middle‑ground alternatives:<ul><li>Large but managed quotas keyed to labor demand and housing supply, with rapid adjustments.</li><li>Strong labor standards (wage floors, employer sanctions) to prevent exploitation and wage undercutting.</li><li>Fast, fair asylum with quick work authorization, plus sponsorship models and circular/seasonal visas.</li><li>Integration investments (language, credential recognition, housing builds) funded nationally, not just locally.</li><li>Development compacts and skills‑partnerships to mitigate brain drain.</li></ul></p><p>If you want, outline your best case for “free and wide,” and I’ll stress‑test each pillar.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 25 in / 1488 out / 1513 total<br>
+                        <strong>Response time:</strong> 22.68s
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>Excellent. A noble and idealistic position. It speaks to a belief in universal human dignity and the right to seek a better life.</p><p>But let me put on my horns and gown for a moment, because an idea this grand and transformative must be stress-tested against the cold, hard realities of the world as it is, not just as we wish it to be.</p><p>Let&#39;s challenge this &quot;free and wide&quot; utopia.</p><p><strong>1. The Economic Mirage: Compassion at Whose Expense?</strong></p><p>You see a beautiful exchange of labor and culture. I see a potential race to the bottom. If you have an unlimited supply of labor willing to work for less, what happens to the wages of the native-born, low-skilled worker? The dishwasher, the farmhand, the construction worker? Does your compassion for the newcomer override your responsibility to the citizen who is now priced out of a job or sees their wages stagnate for decades?</p><p>Furthermore, modern states are not just patches of land; they are complex webs of social services—schools, healthcare, infrastructure, unemployment benefits—all funded by a finite tax base. A &quot;free and wide&quot; influx, particularly of those in need, would place an astronomical strain on these systems. Who pays for the new schools, the emergency room visits, the housing? The inevitable answer is the existing taxpayers. At what point does this become an unsustainable burden that leads to the collapse of the very social safety net that makes the country attractive in the first place?</p><p><strong>2. The Erosion of the Social Contract.</strong></p><p>A nation isn&#39;t just a group of people living within borders; it&#39;s a shared understanding. It&#39;s a set of common values, traditions, a common language, and a trust in shared institutions. &quot;Free and wide&quot; immigration, without any consideration for the pace of integration or cultural compatibility, puts this social contract at extreme risk.</p><p>If vast numbers of people arrive faster than they can be integrated, you don&#39;t get a beautiful mosaic. You get a fractured collection of self-contained, parallel societies that don&#39;t interact, don&#39;t trust each other, and have competing values. This erodes social cohesion, undermines trust, and can lead to deep-seated conflict. Is it truly progressive to risk unraveling the very fabric of a stable society?</p><p><strong>3. The Sovereignty Question: What Is a Nation?</strong></p><p>If a nation has no control over who enters or leaves, in what sense is it even a nation anymore? A fundamental attribute of sovereignty is control over one&#39;s own borders. It is the basic right of a people to self-determination—to decide who joins their society and under what terms.</p><p>&quot;Free and wide&quot; immigration effectively dissolves the concept of citizenship into mere residency. If there is no distinction, no privilege, no responsibility associated with being a citizen, then the word has no meaning. Why would anyone go through a lengthy, difficult process of legal assimilation if they can just walk in and receive the same benefits? You are essentially arguing for the abolition of the nation-state. It&#39;s a radical proposition, but you should be honest about its implications.</p><p><strong>4. The &quot;Brain Drain&quot; Catastrophe for the World&#39;s Poor.</strong></p><p>Let&#39;s look at this from the other side. Who are the first people to leave a struggling country? It’s not the very poorest, who lack the resources to move. It’s the ambitious, the educated, the skilled—the very doctors, engineers, and entrepreneurs that country desperately needs to fix its own problems.</p><p>Your &quot;free and wide&quot; policy, while seemingly helping the individual, could be a death sentence for their home country. You are actively encouraging a &quot;brain drain&quot; that plunders the developing world of its most vital human capital, ensuring that it remains trapped in a cycle of poverty and instability. Is it truly compassionate to offer an escape hatch for the few at the cost of condemning the many left behind?</p><p>---</p><p>So, I ask you: Is this vision of &quot;free and wide&quot; immigration a form of boundless compassion, or is it a naïve idealism that ignores the real-world consequences for a nation&#39;s economy, its social cohesion, its very existence as a sovereign entity, and even the long-term health of the countries the immigrants are leaving?</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> N/A in / N/A out / N/A total<br>
+                        <strong>Response time:</strong> 24.31s
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

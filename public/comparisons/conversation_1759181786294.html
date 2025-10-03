@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Side by Side</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .metadata {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .round {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .round-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .user-prompt {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .user-prompt h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .model-response {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .model-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .anthropic-header {
+            background: #7C3AED;
+        }
+
+        .openai-header {
+            background: #10B981;
+        }
+
+        .gemini-header {
+            background: #F59E0B;
+        }
+
+        .model-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .model-content code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        .model-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .model-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .model-content h1, .model-content h2, .model-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .model-content ul, .model-content ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+
+        .model-content li {
+            margin: 5px 0;
+        }
+
+        .model-content p {
+            margin: 10px 0;
+        }
+
+        .model-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .model-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .usage-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        @media (max-width: 1200px) {
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three Models Comparison</h1>
+
+        <div class="metadata">
+            <strong>Start Time:</strong> 2025-09-29T21:36:05.901Z<br>
+            <strong>Total Rounds:</strong> 1<br>
+            <strong>Last Updated:</strong> 2025-09-29T21:36:26.292Z
+        </div>
+
+        <div class="round">
+            <div class="round-header">
+                <h2>Round 1</h2>
+                <div class="timestamp">2025-09-29T21:36:26.292Z</div>
+            </div>
+
+            <div class="user-prompt">
+                <h3>User Prompt:</h3>
+                <div><p>When does Congress go out of session?</p></div>
+            </div>
+
+            <div class="responses-grid">
+
+                <div class="model-response">
+                    <div class="model-header anthropic-header">Anthropic<br><span style="font-size: 0.8em; opacity: 0.9;">claude-sonnet-4-20250514</span></div>
+                    <div class="model-content"><p>Congress doesn&#39;t have a single fixed date for going out of session, as it varies by year and circumstances. Here&#39;s the general pattern:</p><p><strong>Regular Schedule:</strong><ul><li>Congress typically aims to adjourn for the year in mid-to-late December</li><li>They usually take a summer recess in August</li><li>There are also shorter recesses throughout the year for holidays and district work periods</li></ul></p><p><strong>Variables:</strong><ul><li>Election years: Congress often adjourns earlier (sometimes October) so members can campaign</li><li>Urgent business: Sessions can be extended if critical legislation needs to be passed</li><li>Budget deadlines: If spending bills aren&#39;t completed, sessions may run longer</li></ul></p><p><strong>Current Session:</strong>For the most up-to-date information on when the current Congress plans to adjourn, I&#39;d recommend checking:<ul><li>The House and Senate calendars on congress.gov</li><li>Congressional leadership announcements</li><li>News reports from congressional reporters</li></ul></p><p>The exact adjournment date is usually announced by congressional leadership closer to the time, as it depends on their legislative agenda and priorities.</p></div>
+
+                    <div class="usage-info">
+                        <strong>Tokens:</strong> 15 in / 222 out / 0 total
+                    </div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header openai-header">OpenAI<br><span style="font-size: 0.8em; opacity: 0.9;">gpt-5</span></div>
+                    <div class="model-content"><p>There isn’t a single fixed date when “Congress goes out of session.”</p><ul><li>Each chamber (House and Senate) sets its own calendar and takes recesses throughout the year (notably an August recess and breaks around holidays).</li><li>By constitutional custom, a new session begins on January 3. Each annual session typically wraps up in December, but the exact adjournment date varies year to year and is set by an adjournment resolution. The second session’s final adjournment (in even-numbered years) ends that two-year Congress.</li><li>They also hold brief “pro forma” sessions during some breaks, so they’re not always technically out of session.</li></ul><p>If you tell me the chamber and year you care about, I can give the planned recess and adjournment dates for that schedule.</p></div>
+
+                </div>
+
+                <div class="model-response">
+                    <div class="model-header gemini-header">Gemini<br><span style="font-size: 0.8em; opacity: 0.9;">gemini-2.5-pro</span></div>
+                    <div class="model-content"><p>That&#39;s an excellent question with a more complex answer than you might expect. There isn&#39;t a single, fixed date like the last day of school. The schedule is flexible and politically determined.</p><p>Here’s a breakdown of when and how Congress goes out of session.</p><h3>The Short Answer</h3><p>Congress typically aims to adjourn for the year sometime in<strong>mid-to-late December</strong>. However, the exact date changes every year and often gets pushed back due to last-minute negotiations on major legislation, like the federal budget.</p><p>---</p><h3>The Detailed Explanation: Key Concepts</h3><p>To understand the schedule, you need to know the difference between a &quot;recess&quot; and an &quot;adjournment.&quot;</p><p>#### 1. Recess (Taking a Break) A<strong>recess</strong>is a temporary break within a congressional session. The House and Senate take several of these throughout the year. During a recess, members often return to their home states and districts to meet with constituents.</p><p>Common recesses include:<ul><li><strong>State/District Work Periods:</strong>Several week-long breaks scheduled throughout the year (e.g., Presidents&#39; Day, Memorial Day, July 4th).</li><li><strong>August Recess:</strong>The longest break of the year, typically lasting four to five weeks.</li><li><strong>Thanksgiving Recess:</strong>Usually a one-week break.</li></ul></p><p>Even during a recess, Congress can be called back to Washington, D.C., to deal with an emergency.</p><p>#### 2. Adjournment (Ending the Session for the Year) This is what most people mean when they ask when Congress &quot;goes out of session.&quot; The formal end of a session for the year is called an<strong>adjournment<em>sine die</strong></em>(a Latin term meaning &quot;without a day&quot;). This signifies that the session is over, and Congress will not meet again until the next session begins in January.</p><p><ul><li>A &quot;Congress&quot; (e.g., the 118th Congress) lasts for two years.</li><li>Each two-year term is divided into two<strong>sessions</strong>, each lasting about one year.</li></ul><em>The adjournment</em>sine die* in December marks the end of the first or second session of that Congress.</p><h3>The Typical Congressional Calendar Rhythm</h3><p>While the exact dates are set by the Majority Leaders in the House and Senate, a typical year looks like this:</p><p><ul><li><strong>January:</strong>A new session begins.</li><li><strong>February - July:</strong>In session, with several one- or two-week recesses for holidays and district work.</li><li><strong>August:</strong>The long August recess.</li><li><strong>September - October:</strong>A busy period focused on passing spending bills before the fiscal year ends on September 30th.</li><li><strong>November (Election Year):</strong>Members typically go on a long recess before the November election to campaign. After the election, they return for a<strong>&quot;lame-duck&quot; session</strong>, where they try to pass legislation before the new Congress is sworn in.</li></ul><em><strong>December:</strong>A final, intense push to pass any remaining critical legislation, followed by the adjournment</em>sine die*.</p><h3>How to Find the Current Schedule</h3><p>The most accurate information comes directly from Congress itself. These calendars are set at the beginning of the year but are always subject to change.</p><p><ul><li><strong>House of Representatives Calendar:</strong>The House Clerk publishes the official legislative calendar for the year.</li></ul>*   [<strong>2024 House Calendar</strong>](https://www.majorityleader.gov/calendar)<ul><li><strong>Senate Calendar:</strong>The Senate Majority Leader&#39;s office typically posts the schedule.</li></ul>*   [<strong>2024 Senate Calendar</strong>](https://www.democrats.senate.gov/2024-schedule)<ul><li><strong>Congress.gov:</strong>This is the official U.S. government website for legislative information, which tracks the current status of the House and Senate.</li></ul>*   [<strong>Congress.gov Current Activity</strong>](https://www.congress.gov/)</p><h3>Summary</h3><p>| Term | Meaning | Typical Timing | | :--- | :--- | :--- | |<strong>Recess</strong>| A temporary break within a session. | Multiple times a year (holidays, August). | |<strong>Adjournment<em>Sine Die</strong></em>| The final end of a session for the year. |<strong>Mid-to-late December</strong>. |</p></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

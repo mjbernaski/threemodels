@@ -50,3 +50,4 @@ Requires `.env` file with API keys:
 - `ANTHROPIC_API_KEY`
 - `OPENAI_API_KEY`
 - `GEMINI_API_KEY`
+- for this projectm always focus on the js node code
